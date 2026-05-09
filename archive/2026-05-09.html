@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日金融科技简报 | 2026年5月9日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 16px;
+  }
+
+  .header {
+    text-align: center;
+    padding: 24px 0 20px;
+    border-bottom: 1px solid #21262d;
+    margin-bottom: 20px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff, #a371f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+  }
+  .header .date { color: #8b949e; font-size: 0.85rem; }
+
+  .main-layout {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .main-layout { grid-template-columns: 1fr; }
+  }
+
+  .left-panel {
+    position: sticky;
+    top: 16px;
+    align-self: start;
+  }
+  @media (max-width: 900px) {
+    .left-panel { position: static; }
+  }
+
+  .pricing-card {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+  .pricing-card .card-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .pricing-card .asset-name {
+    font-size: 0.78rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  .pricing-card .change-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+  .badge-up { background: rgba(248, 81, 73, 0.12); color: #f85149; }
+  .badge-down { background: rgba(63, 185, 80, 0.12); color: #3fb950; }
+  .pricing-card .price-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    margin-bottom: 12px;
+  }
+  .sparkline-container {
+    position: relative;
+    width: 100%;
+    height: 60px;
+  }
+  .sparkline-container svg {
+    width: 100%;
+    height: 100%;
+  }
+  .sparkline-tooltip {
+    position: absolute;
+    background: #1c2128;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    color: #e6edf3;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+    z-index: 10;
+    font-family: 'SF Mono', monospace;
+  }
+
+  .gauge-card {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 14px;
+    padding: 20px 18px;
+    text-align: center;
+  }
+  .gauge-card .gauge-title {
+    font-size: 0.78rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .gauge-svg-wrap {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto 8px;
+  }
+  .gauge-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: 'SF Mono', monospace;
+  }
+  .gauge-label {
+    font-size: 0.8rem;
+    color: #8b949e;
+    margin-top: 2px;
+  }
+
+  .data-source {
+    text-align: center;
+    font-size: 0.68rem;
+    color: #484f58;
+    margin-top: 12px;
+  }
+
+  .right-panel { min-width: 0; }
+
+  .headline {
+    background: linear-gradient(135deg, #1c2333 0%, #161b22 100%);
+    border: 1px solid #30363d;
+    border-left: 4px solid #58a6ff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  .headline .tag {
+    display: inline-block;
+    background: rgba(88, 166, 255, 0.15);
+    color: #58a6ff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .headline h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #f0f6fc;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .headline p {
+    color: #8b949e;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+
+  .news-section { margin-bottom: 22px; }
+  .news-section .section-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding-left: 4px;
+  }
+  .news-card {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s;
+  }
+  .news-card:hover { border-color: #30363d; }
+  .news-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .news-card .category {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .cat-regulation { background: rgba(210, 153, 34, 0.15); color: #d29922; }
+  .cat-ai { background: rgba(163, 113, 247, 0.15); color: #a371f7; }
+  .cat-tradfi { background: rgba(88, 166, 255, 0.15); color: #58a6ff; }
+  .cat-infra { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+  .cat-defi { background: rgba(219, 109, 40, 0.15); color: #db6d28; }
+  .cat-market { background: rgba(248, 81, 73, 0.15); color: #f85149; }
+
+  .news-card h3 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #f0f6fc;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .news-card h3 a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .news-card h3 a:hover { border-bottom-color: #58a6ff; color: #58a6ff; }
+  .news-card .desc {
+    color: #8b949e;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .news-card .so-what {
+    background: rgba(88, 166, 255, 0.05);
+    border-left: 3px solid #30363d;
+    padding: 6px 10px;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.76rem;
+    color: #8b949e;
+  }
+  .news-card .so-what strong { color: #58a6ff; }
+
+  .trend-box {
+    background: linear-gradient(135deg, #1c1e2e 0%, #161b22 100%);
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+  }
+  .trend-box .tag {
+    display: inline-block;
+    background: rgba(163, 113, 247, 0.15);
+    color: #a371f7;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .trend-box h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #f0f6fc;
+    margin-bottom: 8px;
+  }
+  .trend-box p {
+    color: #8b949e;
+    font-size: 0.8rem;
+    line-height: 1.8;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #21262d;
+    color: #484f58;
+    font-size: 0.72rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>每日金融科技简报</h1>
+  <div class="date">2026年5月9日 星期六</div>
+</div>
+
+<div class="main-layout">
+
+  <!-- ===== LEFT PANEL: Pricing & Sentiment ===== -->
+  <div class="left-panel">
+
+    <!-- BTC -->
+    <div class="pricing-card" id="card-btc">
+      <div class="card-label">
+        <span class="asset-name">BTC · Bitcoin</span>
+        <span class="change-badge badge-up">▲ +0.80%</span>
+      </div>
+      <div class="price-value">$80,366</div>
+      <div class="sparkline-container" id="spark-btc">
+        <div class="sparkline-tooltip" id="tip-btc"></div>
+      </div>
+    </div>
+
+    <!-- ETH -->
+    <div class="pricing-card" id="card-eth">
+      <div class="card-label">
+        <span class="asset-name">ETH · Ethereum</span>
+        <span class="change-badge badge-up">▲ +1.32%</span>
+      </div>
+      <div class="price-value">$2,315</div>
+      <div class="sparkline-container" id="spark-eth">
+        <div class="sparkline-tooltip" id="tip-eth"></div>
+      </div>
+    </div>
+
+    <!-- XAU -->
+    <div class="pricing-card" id="card-xau">
+      <div class="card-label">
+        <span class="asset-name">XAU · 黄金</span>
+        <span class="change-badge badge-up">▲ +0.12%</span>
+      </div>
+      <div class="price-value">$4,707</div>
+      <div class="sparkline-container" id="spark-xau">
+        <div class="sparkline-tooltip" id="tip-xau"></div>
+      </div>
+    </div>
+
+    <!-- Total Market Cap -->
+    <div class="pricing-card" id="card-total">
+      <div class="card-label">
+        <span class="asset-name">加密总市值</span>
+        <span class="change-badge badge-up">▲ +0.22%</span>
+      </div>
+      <div class="price-value">$2.69T</div>
+      <div class="sparkline-container" id="spark-total">
+        <div class="sparkline-tooltip" id="tip-total"></div>
+      </div>
+    </div>
+
+    <!-- Fear & Greed Gauge -->
+    <div class="gauge-card">
+      <div class="gauge-title">Crypto Fear & Greed Index</div>
+      <div class="gauge-svg-wrap">
+        <svg viewBox="0 0 200 120" id="gauge-svg"></svg>
+      </div>
+      <div class="gauge-value" id="gauge-number">38</div>
+      <div class="gauge-label" id="gauge-text">恐惧 Fear</div>
+    </div>
+
+    <div class="data-source">数据来源：Binance · CoinLore · Alternative.me | 获取时间：2026-05-09 09:30 UTC+8</div>
+  </div>
+
+  <!-- ===== RIGHT PANEL: News ===== -->
+  <div class="right-panel">
+
+    <!-- Headline -->
+    <div class="headline">
+      <span class="tag">今日头条</span>
+      <h2>AWS × Coinbase × Stripe 推出 AgentCore Payments —— AI Agent 用稳定币自主付款时代正式开启</h2>
+      <p>亚马逊云于 5 月 7 日正式发布 AgentCore Payments 预览版，AI Agent 可使用 USDC 在 Base 与 Solana 上直接支付 API、数据、MCP 服务、甚至其他 Agent。采用 Coinbase 的 x402 协议，由 Stripe 旗下 Privy 提供钱包基础设施。这是全球最大云厂商首次将加密微支付嵌入开发工具链 —— "AI 经济"的第一条清算轨道落地。</p>
+    </div>
+
+    <div class="news-section">
+      <div class="section-title">▎AI + 金融科技</div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-ai">AI × 支付</span></div>
+        <h3><a href="https://www.coindesk.com/business/2026/05/07/amazon-rolls-out-ai-agent-stablecoin-payments-platform-with-coinbase-and-stripe" target="_blank">AWS 发布 AgentCore Payments：AI Agent 用 USDC 自主支付</a></h3>
+        <div class="desc">Amazon Bedrock AgentCore Payments 预览版正式上线，允许 AI Agent 在任务执行过程中为 API、网页内容、MCP 服务器、其他 Agent 等数字服务付费。底层采用 Coinbase 的 x402 协议 + USDC（Base/Solana），钱包由 Stripe 收购的 Privy 提供。未来将扩展至酒店预订、差旅支付、商户付款。</div>
+        <div class="so-what"><strong>So What：</strong>全球最大云平台首次将加密微支付直接嵌入开发者工具链 —— 企业不再需要自建合规支付基础设施。x402 协议从行业标准变成"云原生"原语，稳定币首次获得超越交易/结算的 B 端开发者场景。AI Agent 经济的基础设施拼图基本集齐。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-ai">AI × 支付</span></div>
+        <h3><a href="https://fintechnews.hk/38732/blockchain/redotpay-ai-stablecoin-payments-tempo/" target="_blank">RedotPay × Tempo：AI Agent 稳定币支付在 Stripe 背书 L1 上线</a></h3>
+        <div class="desc">跨境支付公司 RedotPay 宣布接入 Tempo Blockchain（Stripe + Paradigm 支持的 L1），采用 Tempo 的 Machine Payments Protocol (MPP)，让自主 AI Agent 执行日常交易。与 AWS/Coinbase 方案形成多链并行生态，Tempo 路线更侧重机器间 M2M 支付语义。</div>
+        <div class="so-what"><strong>So What：</strong>Stripe 在加密支付上双线下注 —— 一端与 AWS/Coinbase 合作 Privy+USDC，一端支持 Paradigm 押注的新型 L1。AI Agent 支付不是单一赢家市场，协议标准之争才刚开始。</div>
+      </div>
+    </div>
+
+    <div class="news-section">
+      <div class="section-title">▎监管 & 立法</div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-regulation">监管</span></div>
+        <h3><a href="https://coinmarketcap.com/community/articles/69fe1a1598f3ef07cfe9bf41" target="_blank">参议院银行委员会锁定 5 月 14 日对 CLARITY 法案进行 Markup</a></h3>
+        <div class="desc">多方消息证实，参议院银行委员会将最早于 5 月 14 日对《数字资产市场清晰法案》进行 Markup 投票，立法草案已向选定行业参与者分发。主席 Tim Scott 希望在 5 月 21 日阵亡将士纪念日休会前完成。Polymarket 对该法案 2026 年内通过的概率上调至 70%。</div>
+        <div class="so-what"><strong>So What：</strong>与上月通过的 GENIUS Act（稳定币）共同构成美国加密监管的"双法案框架"。一旦 Markup 通过，SEC/CFTC 管辖划分、市场结构规则将首次法律化。Coinbase、Circle、Robinhood 的长期政策折价将被重估。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-regulation">监管</span></div>
+        <h3><a href="https://www.coindesk.com/policy/2026/05/08/sec-chair-atkins-signals-new-rules-for-onchain-markets-ai-driven-finance" target="_blank">SEC 主席 Atkins：将为链上市场与 AI 驱动金融制定新规</a></h3>
+        <div class="desc">SEC 主席 Paul Atkins 于 5 月 8 日表态，鉴于金融业正被区块链与 AI 双重重塑，SEC 正考虑为链上交易系统、加密金库、区块链结算基础设施等推出新规则制定。将扩大经纪交易商、交易系统等市场参与者的合规边界。</div>
+        <div class="so-what"><strong>So What：</strong>SEC 从"执法优先"转向"规则制定优先"的路径确认 —— 这与过去 Gensler 时代的监管风格彻底切割。与 AgentCore Payments 同日的表态意味深长：监管与技术落地正在同频推进。</div>
+      </div>
+    </div>
+
+    <div class="news-section">
+      <div class="section-title">▎传统金融 × 数字资产</div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-tradfi">TradFi</span></div>
+        <h3><a href="https://financefeeds.com/dtcc-sets-july-launch-for-tokenized-securities-trading-pilot/" target="_blank">DTCC 7 月启动代币化证券试点：贝莱德、摩根大通、高盛等 50+ 机构参与</a></h3>
+        <div class="desc">管理 $114 万亿资产的 DTCC 确认 2026 年 7 月启动代币化证券有限生产交易，10 月正式推出服务。首批涵盖 Russell 1000 成分股、主要 ETF 与美债，基于 Composer-X 平台，代币化美债部分将部署在 Canton Network。参与机构包括贝莱德、摩根大通、高盛、美银、嘉信、富国、纳斯达克、纽交所、Citadel、Robinhood、Circle、Kraken。</div>
+        <div class="so-what"><strong>So What：</strong>美国证券清算的"中枢神经系统"正式拥抱代币化。Russell 1000 + ETF + 美债意味着 $70 万亿以上资产可能进入链上流通框架。这是比 GENIUS/CLARITY 法案更直接的"华尔街链改"。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-tradfi">TradFi</span></div>
+        <h3><a href="https://blockeden.xyz/blog/2026/05/02/meta-usdc-stablecoin-creator-payouts-polygon-solana/" target="_blank">Meta × Stripe：向创作者发放 USDC，Solana/Polygon 自托管钱包直达</a></h3>
+        <div class="desc">Meta 以 Stripe 为支付服务商，允许哥伦比亚与菲律宾的 Instagram/Facebook/WhatsApp 创作者以 USDC 直接领取收益，支持 MetaMask、Phantom、Binance 钱包，跑在 Solana 或 Polygon 上。自 2022 年 Diem 项目下线后，Meta 首次重返加密支付 —— 这一次没有自己的代币、没有联盟链，只是使用现成的 USDC + 自托管钱包。</div>
+        <div class="so-what"><strong>So What：</strong>30 亿用户级超级平台的支付基础设施选择了"现成稳定币 + 自托管钱包"的最小路径 —— 这对 Diem/Libra 式"平台自发币"的路线画上句号。真正的赢家是 Circle 与公链支付层。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-tradfi">TradFi</span></div>
+        <h3><a href="https://phemex.com/news/article/consensus-miami-day-1-bullish-kraken-chainlink-unveil-major-initiatives-79174" target="_blank">Bullish 以 $42 亿收购 Equiniti：代币化证券基础设施的一次大洗牌</a></h3>
+        <div class="desc">Consensus Miami 首日宣布，上市交易所运营商 Bullish 以 $42 亿现金+股票收购英国股东管理/过户代理巨头 Equiniti，以构建"传统证券过户代理 × 代币化基础设施"合一的平台。Kraken × MoneyGram 同日宣布全球 100+ 国 crypto-to-cash 网络合作。</div>
+        <div class="so-what"><strong>So What：</strong>代币化证券的瓶颈从来不是链，而是过户代理、股东名册、企业行为处理等"老骨头"业务。Bullish 跳过自建，直接吞并传统基础设施商 —— 这与 Broadridge 进入链上代理投票同一逻辑：TradFi 的管道正被收购并链改。</div>
+      </div>
+    </div>
+
+    <div class="news-section">
+      <div class="section-title">▎市场 & 资产结构</div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-market">市场</span></div>
+        <h3><a href="https://phemex.com/news/article/bitwise-ceo-declares-end-of-fouryear-crypto-cycle-as-stablecoin-supply-tops-300b-79614" target="_blank">Bitwise CEO：四年周期结束，稳定币供应突破 $3000 亿</a></h3>
+        <div class="desc">Bitwise CEO Hunter Horsley 在 Consensus 2026 演讲中宣称传统"三年涨一年跌"的四年周期已失效 —— 去年市场下跌打破规律，机构化参与和广泛采用已改变周期性。同期稳定币总供应突破 $3000 亿（含收益型代币）。</div>
+        <div class="so-what"><strong>So What：</strong>周期论失效意味着 BTC/ETH 的贝塔属性下降、基本面属性上升 —— 未来定价更依赖利率、ETF 资金流、稳定币净铸造等宏观变量。$3000 亿稳定币是"加密金融新M1"，比 BTC 总市值更重要的流动性指标。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-market">市场</span></div>
+        <h3><a href="https://new.qq.com/rain/a/20260508A02WJS00" target="_blank">BTC 反弹重回 $80K 上方：从昨日 10 万人爆仓后的技术修复</a></h3>
+        <div class="desc">5 月 7 日加密市场全线跳水（BTC 跌破 $80K，超 10 万人爆仓、爆仓总额 $3.41 亿、多单占比 74%），今日随欧美股市情绪回暖、美伊临时协议仍在磋商中，BTC 反弹至 $80,366 (+0.80%)、ETH 回到 $2,315 (+1.32%)。恐惧贪婪指数仍处 38（Fear），结构性去杠杆后市场观望情绪浓厚。</div>
+        <div class="so-what"><strong>So What：</strong>本轮回调没有伴随 ETF 显著流出，更像是周期顶部的健康去杠杆。Fear 区域 + 机构长期资金仍在 + 稳定币供应持续扩张 —— 多空分歧在"短期动量 vs 结构性买盘"。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-infra">RWA</span></div>
+        <h3><a href="https://news.marsbit.co/20260508171522843347.html" target="_blank">RWA 链上总市值稳站 $309 亿，稳定币反弹至 $3000 亿上方</a></h3>
+        <div class="desc">本周 RWA 上链资产总市值达 $309 亿，稳定币总市值重回 $3000 亿以上。但月度转账量骤降 25.68%，创近期最大跌幅，显示大额结算与套利需求萎缩。月活地址与持有者数量平稳增长，市场从"高频交易驱动"转向"配置性持有与场景渗透并重"。Centrifuge、Balcony 等 RWA 项目完成新一轮融资。</div>
+        <div class="so-what"><strong>So What：</strong>RWA 第一波"美债代币化"红利已释放完毕，进入"场景渗透 + 资产多样化"第二阶段。转账量下降不是坏消息 —— 这是从"炒作"转向"真实持有"的结构性转变。</div>
+      </div>
+    </div>
+
+    <!-- Trend -->
+    <div class="trend-box">
+      <span class="tag">趋势连线 TREND NARRATIVE</span>
+      <h3>AI Agent × 稳定币 × 监管同频 —— 数字资产从"金融操作系统"升级为"机器经济结算层"</h3>
+      <p>本周的三大叙事在同一时间窗口汇聚：<strong>① AI Agent 支付基础设施落地</strong>（AWS AgentCore + x402 + USDC / RedotPay + Tempo MPP）—— 加密支付首次获得云原生 B 端开发者入口；<strong>② 美国监管双支柱成型</strong>（GENIUS 已过 + CLARITY 锁定 5/14 Markup + SEC 表态为链上 & AI 金融制规）—— 合规轨道为机构资金扫清最后障碍；<strong>③ 传统金融基础设施链改加速</strong>（DTCC 7 月试点 + Meta USDC 支付 + Bullish 收购 Equiniti）—— TradFi 的"管道层"正被直接嫁接到链上。三条线共同指向一个更底层的变化：数字资产的下一轮增长动力，不再是加密原生用户，而是 <strong>AI Agent + 传统机构 + 合规资金</strong>构成的"机器经济"。这意味着估值逻辑从"比特币 ETF 资金流"扩展到"AI Agent 消耗稳定币的速率"，从"山寨币叙事"扩展到"链上基础设施费率"。</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>每日金融科技简报 · 信息仅供参考，不构成投资建议</p>
+  <p style="margin-top:4px;">数据源：Binance · CoinLore · Alternative.me · CoinDesk · Reuters · The Block · Cointelegraph · PA News · Decrypt</p>
+</div>
+
+<script>
+// ===== 7-Day Price Data =====
+const priceData = {
+  btc: {
+    dates: ['5/3','5/4','5/5','5/6','5/7','5/8','5/9'],
+    values: [78569, 79861, 80906, 81447, 80006, 80193, 80366],
+    format: v => '$' + v.toLocaleString()
+  },
+  eth: {
+    dates: ['5/3','5/4','5/5','5/6','5/7','5/8','5/9'],
+    values: [2323, 2347, 2361, 2351, 2291, 2307, 2315],
+    format: v => '$' + v.toLocaleString()
+  },
+  xau: {
+    dates: ['5/3','5/4','5/5','5/6','5/7','5/8','5/9'],
+    values: [4606, 4517, 4584, 4687, 4697, 4707, 4707],
+    format: v => '$' + v.toLocaleString()
+  },
+  total: {
+    dates: ['5/3','5/4','5/5','5/6','5/7','5/8','5/9'],
+    values: [2.69, 2.71, 2.70, 2.76, 2.80, 2.67, 2.69],
+    format: v => '$' + v.toFixed(2) + 'T'
+  }
+};
+
+function createSparkline(containerId, tooltipId, data) {
+  const container = document.getElementById(containerId);
+  const tooltip = document.getElementById(tooltipId);
+  const values = data.values;
+  const dates = data.dates;
+
+  const w = container.offsetWidth || 300;
+  const h = 60;
+  const padding = { top: 8, bottom: 8, left: 4, right: 4 };
+  const plotW = w - padding.left - padding.right;
+  const plotH = h - padding.top - padding.bottom;
+
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || 1;
+
+  const points = values.map((v, i) => ({
+    x: padding.left + (i / (values.length - 1)) * plotW,
+    y: padding.top + (1 - (v - min) / range) * plotH,
+    value: v,
+    date: dates[i]
+  }));
+
+  const isUp = values[values.length - 1] >= values[0];
+  const lineColor = isUp ? '#f85149' : '#3fb950';
+  const gradientId = 'grad-' + containerId;
+
+  const pathD = points.map((p, i) => (i === 0 ? 'M' : 'L') + p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' ');
+  const areaD = pathD + ' L' + points[points.length-1].x.toFixed(1) + ',' + h + ' L' + points[0].x.toFixed(1) + ',' + h + ' Z';
+
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+  svg.setAttribute('preserveAspectRatio', 'none');
+  svg.style.width = '100%';
+  svg.style.height = '100%';
+
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="${gradientId}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${lineColor}" stop-opacity="0.2"/>
+        <stop offset="100%" stop-color="${lineColor}" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="${areaD}" fill="url(#${gradientId})" />
+    <path d="${pathD}" fill="none" stroke="${lineColor}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  `;
+
+  points.forEach((p, i) => {
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', p.x);
+    circle.setAttribute('cy', p.y);
+    circle.setAttribute('r', '3');
+    circle.setAttribute('fill', '#0d1117');
+    circle.setAttribute('stroke', lineColor);
+    circle.setAttribute('stroke-width', '1.5');
+    circle.style.opacity = '0';
+    circle.style.transition = 'opacity 0.15s';
+    circle.dataset.idx = i;
+    svg.appendChild(circle);
+
+    const hitArea = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    hitArea.setAttribute('x', p.x - plotW / values.length / 2);
+    hitArea.setAttribute('y', 0);
+    hitArea.setAttribute('width', plotW / values.length);
+    hitArea.setAttribute('height', h);
+    hitArea.setAttribute('fill', 'transparent');
+    hitArea.dataset.idx = i;
+    svg.appendChild(hitArea);
+  });
+
+  container.insertBefore(svg, tooltip);
+
+  container.addEventListener('mousemove', function(e) {
+    const rect = container.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const idx = Math.round(((mouseX - padding.left) / plotW) * (values.length - 1));
+    const clampedIdx = Math.max(0, Math.min(values.length - 1, idx));
+    const p = points[clampedIdx];
+
+    tooltip.textContent = p.date + '  ' + data.format(p.value);
+    tooltip.style.opacity = '1';
+    tooltip.style.left = Math.min(p.x, w - 90) + 'px';
+    tooltip.style.top = (p.y - 28) + 'px';
+
+    const circles = svg.querySelectorAll('circle');
+    circles.forEach((c, i) => { c.style.opacity = i === clampedIdx ? '1' : '0'; });
+  });
+
+  container.addEventListener('mouseleave', function() {
+    tooltip.style.opacity = '0';
+    const circles = svg.querySelectorAll('circle');
+    circles.forEach(c => { c.style.opacity = '0'; });
+  });
+}
+
+function drawGauge(value) {
+  const svg = document.getElementById('gauge-svg');
+  const cx = 100, cy = 95, r = 75;
+
+  const segments = [
+    { start: 180, end: 216, color: '#3fb950' },
+    { start: 216, end: 252, color: '#56d364' },
+    { start: 252, end: 288, color: '#d29922' },
+    { start: 288, end: 324, color: '#f0883e' },
+    { start: 324, end: 360, color: '#f85149' },
+  ];
+
+  let arcs = '';
+  segments.forEach(seg => {
+    const startRad = (seg.start) * Math.PI / 180;
+    const endRad = (seg.end) * Math.PI / 180;
+    const x1 = cx + r * Math.cos(startRad);
+    const y1 = cy + r * Math.sin(startRad);
+    const x2 = cx + r * Math.cos(endRad);
+    const y2 = cy + r * Math.sin(endRad);
+    arcs += `<path d="M ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2}"
+             fill="none" stroke="${seg.color}" stroke-width="10" stroke-linecap="round" opacity="0.3"/>`;
+  });
+
+  const angle = 180 + (value / 100) * 180;
+  const needleRad = angle * Math.PI / 180;
+  const needleLen = r - 15;
+  const nx = cx + needleLen * Math.cos(needleRad);
+  const ny = cy + needleLen * Math.sin(needleRad);
+
+  let needleColor = '#d29922';
+  if (value <= 20) needleColor = '#3fb950';
+  else if (value <= 40) needleColor = '#56d364';
+  else if (value <= 60) needleColor = '#d29922';
+  else if (value <= 80) needleColor = '#f0883e';
+  else needleColor = '#f85149';
+
+  svg.innerHTML = `
+    ${arcs}
+    <circle cx="${cx}" cy="${cy}" r="4" fill="#30363d"/>
+    <line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="${needleColor}" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="${cx}" cy="${cy}" r="3" fill="${needleColor}"/>
+  `;
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  createSparkline('spark-btc', 'tip-btc', priceData.btc);
+  createSparkline('spark-eth', 'tip-eth', priceData.eth);
+  createSparkline('spark-xau', 'tip-xau', priceData.xau);
+  createSparkline('spark-total', 'tip-total', priceData.total);
+  drawGauge(38);
+});
+
+window.addEventListener('resize', function() {
+  ['spark-btc','spark-eth','spark-xau','spark-total'].forEach(id => {
+    const el = document.getElementById(id);
+    const svgEl = el.querySelector('svg');
+    if (svgEl) svgEl.remove();
+  });
+  createSparkline('spark-btc', 'tip-btc', priceData.btc);
+  createSparkline('spark-eth', 'tip-eth', priceData.eth);
+  createSparkline('spark-xau', 'tip-xau', priceData.xau);
+  createSparkline('spark-total', 'tip-total', priceData.total);
+});
+</script>
+
+</body>
+</html>
