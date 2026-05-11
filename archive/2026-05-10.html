@@ -226,7 +226,7 @@ body {
     <div class="price-card">
       <div class="pc-head">
         <span class="pc-name">BTC · Bitcoin</span>
-        <span class="pc-badge badge-up">+0.51%</span>
+        <span class="pc-badge badge-up">较昨日 +0.34%</span>
       </div>
       <div class="pc-price">$80,638</div>
       <div class="spark-wrap">
@@ -238,7 +238,7 @@ body {
     <div class="price-card">
       <div class="pc-head">
         <span class="pc-name">ETH · Ethereum</span>
-        <span class="pc-badge badge-up">+0.58%</span>
+        <span class="pc-badge badge-up">较昨日 +0.35%</span>
       </div>
       <div class="pc-price">$2,323</div>
       <div class="spark-wrap">
@@ -250,7 +250,7 @@ body {
     <div class="price-card">
       <div class="pc-head">
         <span class="pc-name">XAU · 伦敦金</span>
-        <span class="pc-badge badge-up">+0.12%</span>
+        <span class="pc-badge badge-up">较昨日 +0.28%</span>
       </div>
       <div class="pc-price">$4,720</div>
       <div class="spark-wrap">
@@ -262,7 +262,7 @@ body {
     <div class="price-card">
       <div class="pc-head">
         <span class="pc-name">加密总市值</span>
-        <span class="pc-badge badge-up">+0.29%</span>
+        <span class="pc-badge badge-up">较昨日 +2.97%</span>
       </div>
       <div class="pc-price">$2.77T</div>
       <div class="spark-wrap">
@@ -502,7 +502,7 @@ function createSparkline(containerId, tooltipId, data) {
     y: h - ((v - yMin) / yRange) * h
   }));
 
-  const isUp = values[values.length - 1] >= values[0];
+  const isUp = values[values.length - 1] >= values[values.length - 2];
   const lineColor = isUp ? '#f85149' : '#3fb950';
   const fillColor = isUp ? 'rgba(248,81,73,0.15)' : 'rgba(63,185,80,0.15)';
 
