@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>每日区块链 & 金融科技简报 · 2026-05-14</title>
 <style>
+/* 强制重置：防止外部容器压缩 */
+html { height: 100%; }
+body { height: auto !important; min-height: 100% !important; }
+<style>
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body {
   width:100%;
@@ -22,6 +26,8 @@ body {
   max-width:1400px; 
   margin:0 auto; 
   min-height:calc(100vh - 48px);
+  height: auto !important;
+  overflow: visible !important;
 }
 .header {
   text-align:center;
@@ -46,6 +52,8 @@ body {
   display:grid;
   grid-template-columns:40% 60%;
   gap:20px;
+  height: auto !important;
+  min-height: 800px;
 }
 
 /* ============ LEFT PANEL ============ */
@@ -129,10 +137,23 @@ body {
   border-left:3px solid #58a6ff;
   border-radius:12px;
   padding:18px 20px;
+  min-height: auto !important;
+  height: auto !important;
 }
 .headline-wrap .cat { margin-bottom:8px; }
-.headline-wrap h2 { font-size:20px; font-weight:600; line-height:1.4; margin-bottom:10px; }
-.headline-wrap p { color:#8b949e; font-size:14px; line-height:1.5; }
+.headline-wrap h2 { 
+  font-size:20px; 
+  font-weight:600; 
+  line-height:1.4; 
+  margin-bottom:10px;
+  height: auto !important;
+}
+.headline-wrap p { 
+  color:#8b949e; 
+  font-size:14px; 
+  line-height:1.5;
+  height: auto !important;
+}
 
 .news-grid { display:flex; flex-direction:column; gap:12px; }
 .news-card {
