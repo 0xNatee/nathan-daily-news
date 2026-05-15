@@ -73,6 +73,16 @@ body {
 }
 .spark-wrap { position:relative; height:60px; width:100%; }
 .spark-wrap svg { width:100%; height:100%; display:block; }
+.spark-dot {
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  transform:translate(-50%, -50%);
+  pointer-events:none;
+  display:none;
+  z-index:4;
+}
 .spark-tooltip {
   position:absolute;
   background:#0d1117;
@@ -283,6 +293,7 @@ body {
     <div class="pc-price">$81,113</div>
     <div class="spark-wrap" data-asset="btc">
       <svg viewBox="0 0 100 20" preserveAspectRatio="none"></svg>
+      <div class="spark-dot"></div>
       <div class="spark-tooltip"></div>
     </div>
   </div>
@@ -296,6 +307,7 @@ body {
     <div class="pc-price">$2,275</div>
     <div class="spark-wrap" data-asset="eth">
       <svg viewBox="0 0 100 20" preserveAspectRatio="none"></svg>
+      <div class="spark-dot"></div>
       <div class="spark-tooltip"></div>
     </div>
   </div>
@@ -309,6 +321,7 @@ body {
     <div class="pc-price">$4,614/oz</div>
     <div class="spark-wrap" data-asset="xau">
       <svg viewBox="0 0 100 20" preserveAspectRatio="none"></svg>
+      <div class="spark-dot"></div>
       <div class="spark-tooltip"></div>
     </div>
   </div>
@@ -322,6 +335,7 @@ body {
     <div class="pc-price">$2.69T</div>
     <div class="spark-wrap" data-asset="total">
       <svg viewBox="0 0 100 20" preserveAspectRatio="none"></svg>
+      <div class="spark-dot"></div>
       <div class="spark-tooltip"></div>
     </div>
   </div>
@@ -525,6 +539,7 @@ document.querySelectorAll('.spark-wrap').forEach(wrap => {
   const asset = wrap.dataset.asset;
   const data = priceData[asset];
   const svg = wrap.querySelector('svg');
+  const dot = wrap.querySelector('.spark-dot');
   const tooltip = wrap.querySelector('.spark-tooltip');
 
   const max = Math.max(...data.values);
@@ -536,6 +551,10 @@ document.querySelectorAll('.spark-wrap').forEach(wrap => {
   const prevVal = data.values[n - 2];
   const isUp = lastVal >= prevVal;
   const color = isUp ? '#f85149' : '#3fb950';
+
+  // Set dot color
+  dot.style.background = color;
+  dot.style.boxShadow = `0 0 4px ${color}`;
 
   const points = data.values.map((v, i) => {
     const x = (i / (n - 1)) * 100;
@@ -554,31 +573,35 @@ document.querySelectorAll('.spark-wrap').forEach(wrap => {
     <polygon points="${points} 100,20 0,20" fill="url(#grad-${asset})"/>
   `;
 
-  // Interactive hover dots
-  data.values.forEach((v, i) => {
-    const x = (i / (n - 1)) * 100;
-    const y = 20 - ((v - min) / range) * 16 - 2;
-    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    circle.setAttribute('cx', x);
-    circle.setAttribute('cy', y);
-    circle.setAttribute('r', '2.5');
-    circle.setAttribute('fill', color);
-    circle.setAttribute('opacity', '0');
-    circle.style.cursor = 'crosshair';
+  // Precompute pixel positions on mousemove
+  svg.addEventListener('mousemove', e => {
+    const rect = wrap.getBoundingClientRect();
+    const relX = (e.clientX - rect.left) / rect.width; // 0..1
+    const idx = Math.min(Math.round(relX * (n - 1)), n - 1);
+    const v = data.values[idx];
 
-    circle.addEventListener('mouseenter', e => {
-      circle.setAttribute('opacity', '1');
-      tooltip.textContent = `${data.dates[i]}: ${data.format(v)}`;
-      tooltip.style.display = 'block';
-      const rect = wrap.getBoundingClientRect();
-      tooltip.style.left = (e.clientX - rect.left - 10) + 'px';
-      tooltip.style.top = (e.clientY - rect.top - 34) + 'px';
-    });
-    circle.addEventListener('mouseleave', () => {
-      circle.setAttribute('opacity', '0');
-      tooltip.style.display = 'none';
-    });
-    svg.appendChild(circle);
+    // Convert viewBox coords to real px
+    const vbX = (idx / (n - 1)) * 100;
+    const vbY = 20 - ((v - min) / range) * 16 - 2;
+    const pxX = (vbX / 100) * rect.width;
+    const pxY = (vbY / 20) * rect.height;
+
+    // Position dot (HTML div, always perfectly round)
+    dot.style.display = 'block';
+    dot.style.left = pxX + 'px';
+    dot.style.top = pxY + 'px';
+
+    // Position tooltip
+    tooltip.textContent = `${data.dates[idx]}: ${data.format(v)}`;
+    tooltip.style.display = 'block';
+    const tipLeft = Math.min(pxX - 10, rect.width - 120);
+    tooltip.style.left = tipLeft + 'px';
+    tooltip.style.top = (pxY - 34) + 'px';
+  });
+
+  svg.addEventListener('mouseleave', () => {
+    dot.style.display = 'none';
+    tooltip.style.display = 'none';
   });
 });
 </script>
