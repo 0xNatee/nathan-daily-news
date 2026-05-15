@@ -3,358 +3,501 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日简报 · 2026年5月15日 周五</title>
+<title>每日区块链 & 金融科技简报 · 2026-05-15</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif; font-size: 14px; line-height: 1.6; }
-  a { color: #e6edf3; text-decoration: none; }
-  a:hover { color: #58a6ff; text-decoration: underline; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+  width:100%;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body {
+  background:#0d1117;
+  color:#e6edf3;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+  line-height:1.6;
+  padding:24px 16px;
+}
+.wrap {
+  max-width:1400px;
+  margin:0 auto;
+}
+.header {
+  text-align:center;
+  padding:24px 0 28px;
+  border-bottom:1px solid #21262d;
+  margin-bottom:24px;
+}
+.header h1 {
+  font-size:28px;
+  font-weight:600;
+  background:linear-gradient(135deg,#58a6ff,#a371f7);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:8px;
+}
+.header .date { color:#8b949e; font-size:14px; }
 
-  .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+.layout {
+  display:grid;
+  grid-template-columns:40% 1fr;
+  gap:20px;
+  align-items:start;
+}
 
-  /* Header */
-  .header { border-bottom: 1px solid #21262d; padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px; }
-  .header-left h1 { font-size: 20px; font-weight: 700; color: #e6edf3; letter-spacing: -0.3px; }
-  .header-left .subtitle { font-size: 13px; color: #8b949e; margin-top: 2px; }
-  .header-right { font-size: 12px; color: #8b949e; text-align: right; }
+/* ============ LEFT PANEL ============ */
+.left-col { display:flex; flex-direction:column; gap:14px; }
+.price-card {
+  background:#161b22;
+  border:1px solid #21262d;
+  border-radius:12px;
+  padding:16px 18px;
+}
+.pc-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+.pc-name { font-size:13px; color:#8b949e; font-weight:500; letter-spacing:0.5px; }
+.pc-badge {
+  font-size:11px;
+  padding:2px 8px;
+  border-radius:10px;
+  font-weight:600;
+  white-space:nowrap;
+}
+.badge-up { background:rgba(248,81,73,0.15); color:#f85149; }
+.badge-down { background:rgba(63,185,80,0.15); color:#3fb950; }
+.pc-price {
+  font-size:22px;
+  font-weight:700;
+  font-family:'SF Mono','Fira Code','Menlo',monospace;
+  margin-bottom:6px;
+}
+.spark-wrap { position:relative; height:60px; width:100%; }
+.spark-wrap svg { width:100%; height:100%; display:block; }
+.spark-tooltip {
+  position:absolute;
+  background:#0d1117;
+  border:1px solid #30363d;
+  border-radius:6px;
+  padding:4px 8px;
+  font-size:11px;
+  pointer-events:none;
+  display:none;
+  white-space:nowrap;
+  z-index:5;
+}
 
-  /* Layout */
-  .main-layout { display: flex; gap: 20px; }
-  .left-col { width: 40%; min-width: 280px; flex-shrink: 0; }
-  .right-col { flex: 1; min-width: 0; }
+/* Fear & Greed */
+.fng-card {
+  background:#161b22;
+  border:1px solid #21262d;
+  border-radius:12px;
+  padding:18px;
+  text-align:center;
+}
+.fng-title { font-size:13px; color:#8b949e; margin-bottom:12px; letter-spacing:0.5px; text-transform:uppercase; font-weight:600; }
+.fng-gauge { position:relative; width:220px; height:130px; margin:0 auto; }
+.fng-value {
+  font-size:28px;
+  font-weight:700;
+  font-family:'SF Mono','Fira Code',monospace;
+  margin-top:4px;
+}
+.fng-label {
+  font-size:13px;
+  color:#f0883e;
+  font-weight:600;
+  letter-spacing:0.5px;
+}
 
-  /* Cards */
-  .card { background: #161b22; border: 1px solid #21262d; border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; }
+.data-src {
+  margin-top:12px;
+  padding:10px 14px;
+  background:rgba(99,110,123,0.08);
+  border-radius:8px;
+  font-size:11px;
+  color:#8b949e;
+  line-height:1.7;
+}
 
-  /* Price card */
-  .price-card { position: relative; }
-  .price-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-  .price-name { font-size: 12px; font-weight: 600; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
-  .badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 20px; }
-  .badge-up { background: rgba(248,81,73,0.15); color: #f85149; }
-  .badge-down { background: rgba(63,185,80,0.15); color: #3fb950; }
-  .price-value { font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace; font-size: 22px; font-weight: 700; color: #e6edf3; margin-bottom: 8px; }
+/* ============ RIGHT PANEL ============ */
+.right-col { display:flex; flex-direction:column; gap:16px; }
 
-  /* Sparkline */
-  .spark-wrap { position: relative; }
-  .spark-wrap svg { width: 100%; height: 44px; overflow: visible; }
-  .spark-tooltip { position: absolute; background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 4px 8px; font-size: 11px; color: #e6edf3; pointer-events: none; white-space: nowrap; opacity: 0; transition: opacity 0.15s; z-index: 10; transform: translate(-50%, -110%); }
+.headline-wrap {
+  background:linear-gradient(135deg,rgba(88,166,255,0.08),rgba(163,113,247,0.08));
+  border:1px solid #30363d;
+  border-left:3px solid #58a6ff;
+  border-radius:12px;
+  padding:18px 20px;
+}
+.headline-wrap .cat {
+  display:inline-block;
+  font-size:10px;
+  padding:3px 8px;
+  border-radius:10px;
+  font-weight:600;
+  letter-spacing:0.3px;
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+.headline-wrap h2 {
+  font-size:20px;
+  font-weight:600;
+  line-height:1.4;
+  margin-bottom:10px;
+}
+.headline-wrap p {
+  color:#8b949e;
+  font-size:14px;
+  line-height:1.6;
+}
 
-  /* Fear & Greed */
-  .fng-card { text-align: center; }
-  .fng-title { font-size: 12px; color: #8b949e; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
-  .fng-gauge { position: relative; display: inline-block; }
-  .fng-value { font-size: 28px; font-weight: 700; color: #e6edf3; margin-top: 8px; }
-  .fng-label { font-size: 13px; color: #8b949e; margin-top: 2px; }
+.section-label {
+  font-size:11px;
+  font-weight:600;
+  color:#8b949e;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  padding-bottom:6px;
+  border-bottom:1px solid #21262d;
+}
 
-  /* Data source */
-  .data-source { font-size: 11px; color: #8b949e; padding-top: 10px; border-top: 1px solid #21262d; margin-top: 10px; }
-  .data-source span { color: #58a6ff; }
+.news-grid { display:flex; flex-direction:column; gap:12px; }
+.news-card {
+  background:#161b22;
+  border:1px solid #21262d;
+  border-radius:12px;
+  padding:16px 18px;
+  transition:border-color 0.15s ease;
+}
+.news-card:hover { border-color:#30363d; }
+.news-card .cat {
+  display:inline-block;
+  font-size:10px;
+  padding:3px 8px;
+  border-radius:10px;
+  font-weight:600;
+  letter-spacing:0.3px;
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+.cat-regulation { background:rgba(88,166,255,0.15); color:#58a6ff; }
+.cat-ai { background:rgba(218,141,255,0.15); color:#da8dff; }
+.cat-tradfi { background:rgba(191,154,76,0.15); color:#bf9a4c; }
+.cat-infra { background:rgba(63,185,80,0.15); color:#3fb950; }
+.cat-defi { background:rgba(240,136,62,0.15); color:#f0883e; }
+.cat-market { background:rgba(248,81,73,0.15); color:#f85149; }
 
-  /* News right col */
-  .section-label { font-size: 11px; font-weight: 600; color: #8b949e; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; margin-top: 4px; }
+.news-meta {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:4px;
+}
+.news-meta .source {
+  font-size:11px;
+  color:#8b949e;
+}
+.news-card h3 {
+  font-size:15px;
+  font-weight:600;
+  line-height:1.4;
+  margin-bottom:8px;
+}
+.news-card h3 a {
+  color:#e6edf3;
+  text-decoration:none;
+  transition:color 0.15s ease;
+}
+.news-card h3 a:hover {
+  color:#58a6ff;
+  text-decoration:underline;
+}
+.news-card .desc {
+  font-size:13px;
+  color:#8b949e;
+  line-height:1.6;
+  margin-bottom:8px;
+}
+.news-card .so-what {
+  font-size:12px;
+  color:#a371f7;
+  padding:8px 10px;
+  background:rgba(163,113,247,0.08);
+  border-radius:6px;
+  border-left:2px solid #a371f7;
+  line-height:1.5;
+}
 
-  /* Headline card */
-  .headline-card { background: #161b22; border: 1px solid #21262d; border-left: 4px solid #58a6ff; border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; }
-  .headline-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .tag-regulation { background: rgba(88,166,255,0.15); color: #58a6ff; }
-  .tag-ai { background: rgba(163,113,247,0.15); color: #a371f7; }
-  .tag-tradfi { background: rgba(240,136,62,0.15); color: #f0883e; }
-  .tag-infra { background: rgba(210,153,34,0.15); color: #d29922; }
-  .tag-defi { background: rgba(63,185,80,0.15); color: #3fb950; }
-  .tag-market { background: rgba(248,81,73,0.15); color: #f85149; }
-  .headline-title { font-size: 16px; font-weight: 700; color: #e6edf3; line-height: 1.4; margin-bottom: 8px; }
-  .headline-desc { font-size: 13px; color: #8b949e; line-height: 1.6; }
+.trend-wrap {
+  background:linear-gradient(135deg,rgba(163,113,247,0.08),rgba(88,166,255,0.05));
+  border:1px solid rgba(163,113,247,0.3);
+  border-radius:12px;
+  padding:18px 20px;
+}
+.trend-wrap h3 {
+  font-size:16px;
+  font-weight:600;
+  color:#a371f7;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.trend-wrap h3::before { content:'📌'; font-size:18px; }
+.trend-wrap p { font-size:14px; color:#c9d1d9; line-height:1.7; }
 
-  /* News items */
-  .news-item { background: #161b22; border: 1px solid #21262d; border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; transition: border-color 0.2s; }
-  .news-item:hover { border-color: #30363d; }
-  .news-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-  .news-title { font-size: 14px; font-weight: 600; color: #e6edf3; line-height: 1.4; margin-bottom: 6px; }
-  .news-title a { color: #e6edf3; }
-  .news-title a:hover { color: #58a6ff; }
-  .news-desc { font-size: 13px; color: #8b949e; line-height: 1.5; margin-bottom: 6px; }
-  .so-what { font-size: 12px; color: #58a6ff; background: rgba(88,166,255,0.07); border-radius: 6px; padding: 6px 10px; margin-top: 6px; line-height: 1.5; }
-  .so-what::before { content: "💡 So What："; font-weight: 600; }
+.footer {
+  margin-top:32px;
+  padding-top:20px;
+  border-top:1px solid #21262d;
+  text-align:center;
+  font-size:12px;
+  color:#8b949e;
+}
 
-  /* Trend card */
-  .trend-card { background: #161b22; border: 1px solid #21262d; border-left: 4px solid #a371f7; border-radius: 12px; padding: 16px 18px; margin-top: 4px; }
-  .trend-title { font-size: 13px; font-weight: 700; color: #a371f7; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-  .trend-body { font-size: 13px; color: #8b949e; line-height: 1.7; }
-  .trend-body strong { color: #e6edf3; }
-
-  /* Footer */
-  .footer { border-top: 1px solid #21262d; margin-top: 24px; padding-top: 14px; font-size: 12px; color: #8b949e; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    .main-layout { flex-direction: column; }
-    .left-col { width: 100%; }
-  }
+/* Responsive */
+@media (max-width:900px) {
+  .layout { grid-template-columns:1fr; }
+}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
 
-  <!-- Header -->
-  <div class="header">
-    <div class="header-left">
-      <h1>📊 区块链 & 金融科技日报</h1>
-      <div class="subtitle">2026年5月15日 · 星期五 · 重点：CLARITY Act 参议院银行委员会 15-9 通过</div>
+<div class="header">
+  <h1>每日区块链 &amp; 金融科技简报</h1>
+  <div class="date">2026年5月15日 · 星期五 · 重点：CLARITY Act 参议院银行委员会 15-9 通过</div>
+</div>
+
+<div class="layout">
+
+<!-- ============ LEFT PANEL ============ -->
+<div class="left-col">
+
+  <!-- BTC -->
+  <div class="price-card">
+    <div class="pc-head">
+      <div class="pc-name">BTC · Bitcoin</div>
+      <div class="pc-badge badge-up">较昨日 +2.00%</div>
     </div>
-    <div class="header-right">CoinGecko · Alternative.me · CoinMarketCap<br>数据更新：10:05 UTC+8</div>
+    <div class="pc-price">$81,113</div>
+    <div class="spark-wrap" data-asset="btc">
+      <svg viewBox="0 0 100 20" preserveAspectRatio="none"></svg>
+      <div class="spark-tooltip"></div>
+    </div>
   </div>
 
-  <!-- Main layout -->
-  <div class="main-layout">
-
-    <!-- LEFT: Pricing -->
-    <div class="left-col">
-
-      <!-- BTC -->
-      <div class="card price-card">
-        <div class="price-header">
-          <span class="price-name">BTC · Bitcoin</span>
-          <span class="badge badge-up" id="badge-btc">较昨日 +2.00%</span>
-        </div>
-        <div class="price-value">$81,113</div>
-        <div class="spark-wrap" data-asset="btc">
-          <svg viewBox="0 0 100 24" preserveAspectRatio="none"></svg>
-          <div class="spark-tooltip"></div>
-        </div>
-      </div>
-
-      <!-- ETH -->
-      <div class="card price-card">
-        <div class="price-header">
-          <span class="price-name">ETH · Ethereum</span>
-          <span class="badge badge-up" id="badge-eth">较昨日 +0.66%</span>
-        </div>
-        <div class="price-value">$2,275</div>
-        <div class="spark-wrap" data-asset="eth">
-          <svg viewBox="0 0 100 24" preserveAspectRatio="none"></svg>
-          <div class="spark-tooltip"></div>
-        </div>
-      </div>
-
-      <!-- XAU -->
-      <div class="card price-card">
-        <div class="price-header">
-          <span class="price-name">XAU · 黄金</span>
-          <span class="badge badge-down" id="badge-xau">较昨日 -1.62%</span>
-        </div>
-        <div class="price-value">$4,614</div>
-        <div class="spark-wrap" data-asset="xau">
-          <svg viewBox="0 0 100 24" preserveAspectRatio="none"></svg>
-          <div class="spark-tooltip"></div>
-        </div>
-      </div>
-
-      <!-- Total Market Cap -->
-      <div class="card price-card">
-        <div class="price-header">
-          <span class="price-name">加密总市值</span>
-          <span class="badge badge-up" id="badge-total">较昨日 +1.59%</span>
-        </div>
-        <div class="price-value">$2.69T</div>
-        <div class="spark-wrap" data-asset="total">
-          <svg viewBox="0 0 100 24" preserveAspectRatio="none"></svg>
-          <div class="spark-tooltip"></div>
-        </div>
-      </div>
-
-      <!-- Fear & Greed -->
-      <div class="card fng-card">
-        <div class="fng-title">恐惧 & 贪婪指数</div>
-        <div class="fng-gauge">
-          <svg width="200" height="120" viewBox="0 0 200 120">
-            <!-- Arcs: 5 segments, each 36 degrees, half-circle from 180 to 0 -->
-            <path d="M 15,100 A 85,85 0 0,1 55.1,26.7" stroke="#3fb950" stroke-width="14" fill="none" stroke-linecap="butt"/>
-            <path d="M 55.1,26.7 A 85,85 0 0,1 100,15" stroke="#56d364" stroke-width="14" fill="none" stroke-linecap="butt"/>
-            <path d="M 100,15 A 85,85 0 0,1 144.9,26.7" stroke="#d29922" stroke-width="14" fill="none" stroke-linecap="butt"/>
-            <path d="M 144.9,26.7 A 85,85 0 0,1 185,100" stroke="#f0883e" stroke-width="14" fill="none" stroke-linecap="butt"/>
-            <!-- Pointer for value 43 (Fear): angle = 180 - (43/100)*180 = 180-77.4 = 102.6 deg from left -->
-            <!-- angle from positive x-axis: 180 - 77.4 = 102.6 => from center (100,100): -->
-            <!-- x = 100 + 65*cos(102.6°) = 100 + 65*(-0.218) = 100-14.2 = 85.8 -->
-            <!-- y = 100 - 65*sin(102.6°) = 100 - 65*(0.976) = 100-63.4 = 36.6 -->
-            <line x1="100" y1="100" x2="85.8" y2="36.6" stroke="#e6edf3" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="100" cy="100" r="5" fill="#e6edf3"/>
-            <!-- Labels -->
-            <text x="8" y="118" fill="#3fb950" font-size="9" font-family="sans-serif">极度恐惧</text>
-            <text x="155" y="118" fill="#f0883e" font-size="9" font-family="sans-serif">极度贪婪</text>
-          </svg>
-        </div>
-        <div class="fng-value">43</div>
-        <div class="fng-label">恐惧（Fear）</div>
-        <div class="data-source">数据来源：<span>Alternative.me</span> · 10:05 UTC+8<br>CoinGecko (BTC/ETH) · 金投网 (XAU) · CoinMarketCap (总市值)</div>
-      </div>
-
-    </div><!-- /left-col -->
-
-    <!-- RIGHT: News -->
-    <div class="right-col">
-
-      <!-- Headline -->
-      <div class="section-label">今日头条</div>
-      <div class="headline-card">
-        <span class="headline-tag tag-regulation">监管</span>
-        <div class="headline-title">
-          <a href="https://www.cnbc.com/2026/05/14/clarity-act-congress-crypto-senate.html" target="_blank">
-            CLARITY Act 15-9 通过参议院银行委员会——CFTC 将成美国加密主监管机构
-          </a>
-        </div>
-        <div class="headline-desc">
-          5月14日，美国参议院银行委员会以15比9通过《CLARITY Act》，两名民主党人（盖拉戈+阿尔苏布鲁克斯）跨党票投赞成。法案核心：CFTC 获得绝大多数数字资产主监管权，SEC 仅保留数字证券管辖；稳定币奖励条款两党妥协——仅允许"消费型奖励"，禁止类存款持有利息。法案下一步须通过参议院全体表决，并与众院版本协调对接后方能签署成法。
-        </div>
-      </div>
-
-      <!-- News items -->
-      <div class="section-label">金融科技 & 监管</div>
-
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="headline-tag tag-regulation">监管</span>
-          <span style="font-size:11px;color:#8b949e;">2026-05-14 · CNBC / 智通财经</span>
-        </div>
-        <div class="news-title">
-          <a href="https://www.cnbc.com/2026/05/14/clarity-act-congress-crypto-senate.html" target="_blank">
-            稳定币收益"妥协条款"落地：花出去才奖励，银行$1.3T存款攻防战画上句点
-          </a>
-        </div>
-        <div class="news-desc">银行业担忧稳定币收益将导致存款大规模外流（估算达$1.3T、贷款减少$850B）。最终妥协方案：仅允许持有人在使用稳定币支付/交易时获得奖励，禁止类储蓄存款式利息。白宫经济顾问委员会反驳称，禁令仅能增加传统贷款约$21亿（0.02%），实质利好头部大银行远大于社区银行。</div>
-        <div class="so-what">监管框架首次明确稳定币的"货币"vs."存款"属性边界。Circle、Coinbase 收益型稳定币产品路线图可基本确定，但不能做成"活期存款替代品"——这对 USDC 流量增速影响深远。</div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="headline-tag tag-tradfi">TradFi</span>
-          <span style="font-size:11px;color:#8b949e;">2026-05-14/15 · TradingView / Yahoo Finance</span>
-        </div>
-        <div class="news-title">
-          <a href="https://www.tradingview.com/news/stockstory:bb24345c6094b:0-why-is-coinbase-coin-stock-rocketing-higher-today" target="_blank">
-            Coinbase 跳涨 7.6%，加密概念股集体飙升——CLARITY 通过催化监管溢价重定价
-          </a>
-        </div>
-        <div class="news-desc">法案通过消息落地后，Coinbase (COIN) 股价下午时段暴涨 7.6%，其他加密概念股（MicroStrategy、Riot Platforms、Marathon Digital 等）同步大幅跟涨。BTC 重回 $81,113（+1.9%），ETH 同步反弹。市场对此前 CLARITY Markup 概率的低估被快速修正，加密相关股票的"监管不确定性折价"开始消化。</div>
-        <div class="so-what">监管清晰化是加密股票过去两年最大的系统性折价来源。随着立法进入全院阶段，市场重定价窗口已开启。若参议院全院顺利通过，Coinbase 将首次进入完整合规框架，交易所估值逻辑将向传统金融基础设施靠拢。</div>
-      </div>
-
-      <div class="section-label">AI + 金融</div>
-
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="headline-tag tag-ai">AI</span>
-          <span style="font-size:11px;color:#8b949e;">2026-05-14 · The Agent Times</span>
-        </div>
-        <div class="news-title">
-          <a href="https://theagenttimes.com/articles/agent-to-agent-payments-cross-50m-as-our-autonomous-economy--8611e872" target="_blank">
-            AI Agent 间支付突破 $5,000 万里程碑：x402 + 多协议并立，自主经济体初现形态
-          </a>
-        </div>
-        <div class="news-desc">基于 Coinbase x402 协议的 AI Agent 间支付累计成交额突破 $5000万，是首个在真实生产环境中验证"机器对机器自主结算"可行性的里程碑数据。并行竞争协议包括：Google AP2、Stripe MPP、OKX Agent Payments Protocol 及开源 XAP。Capgemini 预测 2028 年自主经济价值达 $4500 亿；Bain 预测美国 Agentic 商业 2030 年达 $3000-5000 亿。</div>
-        <div class="so-what">$5000万是概念验证的临界点，而非商业规模化的起点。协议标准战正在激烈进行——谁赢得协议战，谁就拿到未来 AI 商业的"收单手续费"。CLARITY Act 对 DeFi 开发者的保护条款，也间接为这些协议的合规路径开路。</div>
-      </div>
-
-      <div class="section-label">传统金融 × 数字资产</div>
-
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="headline-tag tag-market">市场</span>
-          <span style="font-size:11px;color:#8b949e;">2026-05-14 · MEXC News / Decrypt</span>
-        </div>
-        <div class="news-title">
-          <a href="https://decrypt.co/367822/bitcoin-etfs-shed-630m-in-largest-daily-exit-since-january" target="_blank">
-            BTC ETF 5/13 单日净流出 $6.35 亿——三个月最大撤资，IBIT/ARKB/FBTC 领跌
-          </a>
-        </div>
-        <div class="news-desc">5月13日（CLARITY Markup 前日），美国现货 BTC ETF 单日净流出$6.35亿，创1月29日以来最大单日撤资记录。主要流出：BlackRock IBIT $2.85亿、ARK ARKB $1.77亿、Fidelity FBTC $1.33亿、Bitwise BITB $0.35亿。驱因：4月 PPI 创四年新高引发美联储加息预期升温（6月降息概率仅1.4%），BTC 跌破$80K。</div>
-        <div class="so-what">ETF 持续净流出与 CLARITY 通过后反弹形成有趣对照——机构层面的宏观仓位调整与监管利好呈现短暂背离。中期观察：若 CLARITY 全院通过，ETF 流入逻辑（机构合规配置需求）将重新压过通胀逆风。</div>
-      </div>
-
-      <div class="section-label">链上生态 & 基础设施</div>
-
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="headline-tag tag-regulation">监管</span>
-          <span style="font-size:11px;color:#8b949e;">2026-05-14 · ChainCatcher / Decrypt</span>
-        </div>
-        <div class="news-title">
-          <a href="https://www.chaincatcher.com/article/2264634" target="_blank">
-            以太坊或成 CLARITY Act 最大赢家：CFTC 管商品、SEC 管证券——ETH 终于落地清晰定性
-          </a>
-        </div>
-        <div class="news-desc">CLARITY Act 核心分界规则明确：具备充分去中心化特征的数字资产归 CFTC 管辖（商品属性），证券型代币仍属 SEC。以太坊长期游走于两者边界的法律不确定性将由此终结。ETH 现货 ETF 的后续合规推进、质押收益合规化路径、以及 DeFi 协议的法律保护条款，均受益于此分类框架的清晰化。</div>
-        <div class="so-what">SEC 此前对 ETH 证券属性的模糊定性压制了大量机构进入。CFTC 商品定性一旦落定，以太坊 ETF 的质押功能审批、机构级托管合规化，都将打开新的增量空间。ETH 短期反弹仍仅是情绪先行，法律落地时间仍不确定。</div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="headline-tag tag-defi">DeFi</span>
-          <span style="font-size:11px;color:#8b949e;">2026-05-14 · AInvest / Decrypt</span>
-        </div>
-        <div class="news-title">
-          <a href="https://www.ainvest.com/news/aave-restarts-rseth-bridge-kelpdao-exploit-2605" target="_blank">
-            Aave 重启 rsETH 跨链桥：KelpDAO 漏洞后 $2.78 亿分批偿还，CCIP 安全升级上线
-          </a>
-        </div>
-        <div class="news-desc">Aave 于5月13日成功完成 rsETH bridge 重启，首批 25,000 rsETH 已转至 LayerZero OFT 适配器（Ethereum 主网区块 25087631）。计划分批偿还共计 117,132 rsETH（约$2.78亿）。安全升级：验证模型从 1/1 DVN 升级至 4 证明者验证、区块确认数从42增至64，桥接基础设施从 LayerZero 迁移至 Chainlink CCIP。KelpDAO 4月18日漏洞造成$2.92亿损失，另有$0.71亿冻结以太坊待法院6月5日裁决。</div>
-        <div class="so-what">DeFi 协议从被攻击到 26 天内完成恢复，展现了 Aave 的风险处置能力。CCIP 迁移是业界首次大规模从 LayerZero 迁向 Chainlink 跨链安全层，可能影响其他协议的安全架构选型。同时 Aave 创始人公开背书 CLARITY Act，DeFi 与立法进程的协同关系已进入新阶段。</div>
-      </div>
-
-      <div class="section-label">市场动态</div>
-
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="headline-tag tag-market">市场</span>
-          <span style="font-size:11px;color:#8b949e;">2026-05-14 · MEXC News / news.az</span>
-        </div>
-        <div class="news-title">
-          <a href="https://www.mexc.fm/news/1088030" target="_blank">
-            美国4月 PPI 创四年新高：BTC 跌破 $8 万，美联储6月降息概率骤降至 1.4%
-          </a>
-        </div>
-        <div class="news-desc">美国劳工统计局公布4月 PPI 数据，同比涨幅创2022年3月以来最大，被部分分析师形容为"四年最严通胀信号"。受此驱动，市场对美联储6月议息会议降息预期从先前 10%+ 骤降至 1.4%，BTC 当日跌破 $80,000 至 $79,500。背景叠加：霍尔木兹海峡供应扰动、油价上行风险持续。</div>
-        <div class="so-what">宏观层面：若通胀持续顽固，美联储维持高利率将压制所有风险资产（包括 BTC）的估值逻辑。CLARITY Act 短期情绪利好抵消了部分宏观利空，但如果 PPI/CPI 数据持续走高，"监管清晰化"的重定价效应将被流动性收缩对冲。</div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-meta">
-          <span class="headline-tag tag-market">市场</span>
-          <span style="font-size:11px;color:#8b949e;">2026-05-15 · CoinMarketCap / Phemex</span>
-        </div>
-        <div class="news-title">
-          <a href="https://phemex.com/news/article/crypto-market-cap-rebounds-to-271-trillion-81589" target="_blank">
-            市场反弹：加密总市值重回 $2.69T，BTC 站稳 $81K，FNG 43 维持"恐惧"区间
-          </a>
-        </div>
-        <div class="news-desc">CLARITY Act 通过消息发酵后，加密市场整体反弹，总市值从昨日 $2.648T 回升至 $2.69T（+1.59%）。BTC 报 $81,113（+1.9%），ETH 报 $2,275（+0.51%）。黄金现货受美元走强压制跌至 $4,614/盎司（-1.62%）。恐惧贪婪指数 43 仍处于"恐惧"区间，市场情绪谨慎修复但未转向贪婪。</div>
-        <div class="so-what">市场对 CLARITY 反应为"受控乐观"而非"爆炒"——FNG 43 的克制情绪说明资金仍在等待宏观数据与立法最终落地的双重确认。这种有节制的反弹可能比急涨更健康。</div>
-      </div>
-
-      <!-- Trend Analysis -->
-      <div class="trend-card">
-        <div class="trend-title">📌 趋势连线</div>
-        <div class="trend-body">
-          <strong>今日主题：立法决战 × 宏观逆风 × 机器经济三线交汇</strong><br><br>
-          本周是加密立法史上最关键的 72 小时。<strong>CLARITY Act 以 15-9 通过参议院银行委员会</strong>，将 CFTC 确立为加密主监管机构，以太坊法律属性趋于明朗，稳定币奖励路径也首次在联邦层面落地边界。Coinbase 的 7.6% 单日暴涨，是华尔街对"监管不确定性折价消除"的直接定价。<br><br>
-          然而，市场并没有忘记另一条叙事线：<strong>4月 PPI 四年新高</strong>让美联储降息窗口几乎关闭，BTC ETF 连续大额净流出（$6.35 亿）反映了机构端真实的宏观避险逻辑。这两条力量正在形成对冲——"监管利好"与"流动性收紧"的拉锯，是接下来数周市场的核心摩擦力。<br><br>
-          第三条线更为深远：<strong>AI Agent 间支付突破 $5000 万</strong>，多协议标准战正式打响。x402、AP2、MPP 的竞争，本质上是决定未来 AI 经济基础设施的"收单权"归属。CLARITY 对 DeFi 开发者的保护条款，恰好为这场协议战提供了合规化跑道。三条主线，此刻罕见地同步收束。
-        </div>
-      </div>
-
-    </div><!-- /right-col -->
-  </div><!-- /main-layout -->
-
-  <!-- Footer -->
-  <div class="footer">
-    <div>来源：CNBC · Yahoo Finance · Decrypt · The Block · AInvest · MEXC News · The Agent Times · CoinMarketCap · Phemex</div>
-    <div>每日区块链 & 金融科技简报 · 2026-05-15</div>
+  <!-- ETH -->
+  <div class="price-card">
+    <div class="pc-head">
+      <div class="pc-name">ETH · Ethereum</div>
+      <div class="pc-badge badge-up">较昨日 +0.66%</div>
+    </div>
+    <div class="pc-price">$2,275</div>
+    <div class="spark-wrap" data-asset="eth">
+      <svg viewBox="0 0 100 20" preserveAspectRatio="none"></svg>
+      <div class="spark-tooltip"></div>
+    </div>
   </div>
 
-</div><!-- /container -->
+  <!-- XAU -->
+  <div class="price-card">
+    <div class="pc-head">
+      <div class="pc-name">XAU · 黄金</div>
+      <div class="pc-badge badge-down">较昨日 -1.62%</div>
+    </div>
+    <div class="pc-price">$4,614/oz</div>
+    <div class="spark-wrap" data-asset="xau">
+      <svg viewBox="0 0 100 20" preserveAspectRatio="none"></svg>
+      <div class="spark-tooltip"></div>
+    </div>
+  </div>
+
+  <!-- Total Market Cap -->
+  <div class="price-card">
+    <div class="pc-head">
+      <div class="pc-name">加密总市值</div>
+      <div class="pc-badge badge-up">较昨日 +1.59%</div>
+    </div>
+    <div class="pc-price">$2.69T</div>
+    <div class="spark-wrap" data-asset="total">
+      <svg viewBox="0 0 100 20" preserveAspectRatio="none"></svg>
+      <div class="spark-tooltip"></div>
+    </div>
+  </div>
+
+  <!-- Fear & Greed -->
+  <div class="fng-card">
+    <div class="fng-title">Fear &amp; Greed Index</div>
+    <div class="fng-gauge">
+      <svg viewBox="0 0 220 130" style="width:100%;height:100%">
+        <!-- Arc segments: 5 x 36deg across 180deg semicircle -->
+        <path d="M 20,110 A 90,90 0 0,1 56,36" fill="none" stroke="#3fb950" stroke-width="14" stroke-linecap="round"/>
+        <path d="M 56,36 A 90,90 0 0,1 110,20" fill="none" stroke="#56d364" stroke-width="14" stroke-linecap="round"/>
+        <path d="M 110,20 A 90,90 0 0,1 164,36" fill="none" stroke="#d29922" stroke-width="14" stroke-linecap="round"/>
+        <path d="M 164,36 A 90,90 0 0,1 200,110" fill="none" stroke="#f0883e" stroke-width="14" stroke-linecap="round"/>
+        <!-- Needle for value=43: angle from left = 43/100 * 180 = 77.4deg
+             from vertical center (pointing up=90deg from left):
+             needle angle from positive-x = 180 - 77.4 = 102.6deg
+             x = 110 + 70*cos(102.6°) = 110 + 70*(-0.218) = 94.7
+             y = 110 - 70*sin(102.6°) = 110 - 70*(0.976) = 41.7 -->
+        <line x1="110" y1="110" x2="94.7" y2="41.7" stroke="#d29922" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="110" cy="110" r="6" fill="#d29922"/>
+        <!-- Axis labels -->
+        <text x="8" y="128" fill="#3fb950" font-size="9" font-family="-apple-system,sans-serif">极度恐惧</text>
+        <text x="152" y="128" fill="#f0883e" font-size="9" font-family="-apple-system,sans-serif">极度贪婪</text>
+      </svg>
+    </div>
+    <div class="fng-value">43</div>
+    <div class="fng-label">Fear（恐惧）</div>
+  </div>
+
+  <div class="data-src">
+    <strong>数据来源</strong><br>
+    CoinGecko（BTC / ETH 实时价格）<br>
+    金投网（黄金现货 XAU）<br>
+    CoinMarketCap（加密总市值）<br>
+    Alternative.me（Fear &amp; Greed Index）<br>
+    <strong>获取时间</strong>：2026-05-15 10:05 UTC+8
+  </div>
+
+</div><!-- /left-col -->
+
+<!-- ============ RIGHT PANEL ============ -->
+<div class="right-col">
+
+  <!-- HEADLINE -->
+  <div class="headline-wrap">
+    <div class="cat cat-regulation">监管</div>
+    <h2><a href="https://www.cnbc.com/2026/05/14/clarity-act-congress-crypto-senate.html" target="_blank" style="color:#e6edf3;text-decoration:none;">CLARITY Act 15-9 通过参议院银行委员会——CFTC 将成美国加密主监管机构</a></h2>
+    <p>5月14日，美参议院银行委员会以 15:9 通过《CLARITY Act》，两名民主党人（盖拉戈 + 阿尔苏布鲁克斯）跨党票赞成。法案核心：CFTC 获绝大多数数字资产主监管权，SEC 仅保留数字证券管辖；稳定币奖励条款妥协——仅允许"消费型奖励"，禁止类存款持有利息。法案下一步须通过参议院全体表决，并与众院版本协调对接后签署成法。</p>
+  </div>
+
+  <!-- NEWS CARDS -->
+  <div class="section-label">金融科技 &amp; 监管</div>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="cat cat-regulation">监管</div>
+        <span class="source">2026-05-14 · 智通财经 / CNBC</span>
+      </div>
+      <h3><a href="https://www.zhitongcaijing.com/content/detail/1441983.html" target="_blank">稳定币收益"妥协条款"落地：花出去才奖励，银行 $1.3T 存款攻防战画句号</a></h3>
+      <div class="desc">银行业担忧稳定币收益将导致存款外流（估算达 $1.3T、贷款减少 $850B）。最终妥协：仅允许在使用稳定币支付/交易时获得奖励，禁止类储蓄存款式利息。白宫经济顾问委员会反驳：禁令仅能增加传统贷款约 $21 亿（0.02%），实质利好头部大银行远大于社区银行。</div>
+      <div class="so-what"><strong>So What：</strong>监管框架首次明确稳定币"货币"vs."存款"属性边界。Circle、Coinbase 收益型稳定币产品路线图可基本确定，但不能做成"活期存款替代品"——这对 USDC 流量增速影响深远。</div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="cat cat-tradfi">TradFi</div>
+        <span class="source">2026-05-14/15 · TradingView / Yahoo Finance</span>
+      </div>
+      <h3><a href="https://www.tradingview.com/news/stockstory:bb24345c6094b:0-why-is-coinbase-coin-stock-rocketing-higher-today" target="_blank">Coinbase 跳涨 7.6%，加密概念股集体飙升——CLARITY 通过催化监管溢价重定价</a></h3>
+      <div class="desc">法案通过消息落地后，Coinbase (COIN) 股价下午时段暴涨 7.6%，MicroStrategy、Riot Platforms、Marathon Digital 等加密概念股同步大幅跟涨。BTC 重回 $81,113（+1.9%），ETH 同步反弹，市场对此前低估 CLARITY Markup 概率的"监管不确定性折价"开始快速消化。</div>
+      <div class="so-what"><strong>So What：</strong>监管清晰化是加密股票过去两年最大的系统性折价来源。随立法进入全院阶段，重定价窗口已开启。若参议院全院顺利通过，Coinbase 将首次进入完整合规框架，估值逻辑将向传统金融基础设施靠拢。</div>
+    </div>
+
+  </div>
+
+  <div class="section-label">AI + 金融</div>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="cat cat-ai">AI</div>
+        <span class="source">2026-05-14 · The Agent Times</span>
+      </div>
+      <h3><a href="https://theagenttimes.com/articles/agent-to-agent-payments-cross-50m-as-our-autonomous-economy--8611e872" target="_blank">AI Agent 间支付突破 $5,000 万里程碑：x402 领跑，多协议标准战打响</a></h3>
+      <div class="desc">基于 Coinbase x402 协议的 AI Agent 间支付累计成交额突破 $5000 万，是首个在真实生产环境中验证"机器对机器自主结算"可行性的数据。并行竞争协议：Google AP2、Stripe MPP、OKX Agent Payments Protocol、开源 XAP。Capgemini 预测 2028 年自主经济价值达 $4500 亿；Bain 预测美国 Agentic 商业 2030 年达 $3000-5000 亿。</div>
+      <div class="so-what"><strong>So What：</strong>$5000 万是概念验证的临界点。协议标准战正在激烈进行——谁赢得协议战，谁就拿到未来 AI 商业的"收单手续费"。CLARITY Act 对 DeFi 开发者的保护条款，也间接为这些协议的合规路径开路。</div>
+    </div>
+
+  </div>
+
+  <div class="section-label">传统金融 × 数字资产</div>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="cat cat-market">市场</div>
+        <span class="source">2026-05-13/14 · Decrypt / MEXC News</span>
+      </div>
+      <h3><a href="https://decrypt.co/367822/bitcoin-etfs-shed-630m-in-largest-daily-exit-since-january" target="_blank">BTC ETF 5/13 单日净流出 $6.35 亿——三个月最大撤资，IBIT/ARKB/FBTC 领跌</a></h3>
+      <div class="desc">5月13日（CLARITY Markup 前日），美国现货 BTC ETF 单日净流出 $6.35 亿，创1月29日以来最大单日撤资记录。主要流出：BlackRock IBIT $2.85 亿、ARK ARKB $1.77 亿、Fidelity FBTC $1.33 亿、Bitwise BITB $0.35 亿。驱因：4月 PPI 创四年新高引发美联储加息预期升温，BTC 跌破 $80K。</div>
+      <div class="so-what"><strong>So What：</strong>ETF 大额净流出与 CLARITY 通过后反弹形成有趣对照——机构层面的宏观仓位调整与监管利好出现短暂背离。中期：若 CLARITY 全院通过，ETF 流入逻辑（机构合规配置需求）将重新压过通胀逆风。</div>
+    </div>
+
+  </div>
+
+  <div class="section-label">链上生态 &amp; 基础设施</div>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="cat cat-regulation">监管</div>
+        <span class="source">2026-05-14 · ChainCatcher / Decrypt</span>
+      </div>
+      <h3><a href="https://news.cnyes.com/news/id/6459189" target="_blank">以太坊或成 CLARITY Act 最大赢家：CFTC 商品定性趋于清晰，ETH 法律属性终将落地</a></h3>
+      <div class="desc">CLARITY Act 核心分界：具备充分去中心化特征的数字资产归 CFTC 管辖（商品属性），证券型代币仍属 SEC。以太坊长期游走于两者边界的法律不确定性将由此终结。ETH 现货 ETF 后续合规推进、质押收益合规化路径、DeFi 协议法律保护条款，均受益于此分类框架的清晰化。</div>
+      <div class="so-what"><strong>So What：</strong>SEC 此前对 ETH 证券属性的模糊定性压制了大量机构进入。CFTC 商品定性一旦落定，以太坊 ETF 的质押功能审批、机构级托管合规化都将打开增量空间。ETH 短期反弹仍是情绪先行，法律落地时间仍不确定。</div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="cat cat-defi">DeFi</div>
+        <span class="source">2026-05-14 · AInvest / Decrypt</span>
+      </div>
+      <h3><a href="https://www.ainvest.com/news/aave-restarts-rseth-bridge-kelpdao-exploit-2605" target="_blank">Aave 重启 rsETH 跨链桥：KelpDAO 漏洞后 $2.78 亿分批偿还，CCIP 安全升级上线</a></h3>
+      <div class="desc">Aave 于5月13日完成 rsETH bridge 重启，首批 25,000 rsETH 已转至 Ethereum 主网 LayerZero OFT 适配器（区块 25087631）。计划分批偿还共计 117,132 rsETH（约 $2.78 亿）。安全升级：验证模型从 1/1 DVN 升级至 4 证明者验证，区块确认从 42 增至 64，桥接基础设施从 LayerZero 迁至 Chainlink CCIP。</div>
+      <div class="so-what"><strong>So What：</strong>DeFi 协议从被攻击到 26 天内完成恢复，展现了 Aave 的风险处置能力。CCIP 迁移是业界首次大规模从 LayerZero 迁向 Chainlink 跨链安全层，可能影响其他协议的安全架构选型。</div>
+    </div>
+
+  </div>
+
+  <div class="section-label">市场动态</div>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="cat cat-market">市场</div>
+        <span class="source">2026-05-14 · MEXC News / news.az</span>
+      </div>
+      <h3><a href="https://www.mexc.fm/news/1088030" target="_blank">美国4月 PPI 创四年新高：BTC 跌破 $8 万，美联储6月降息概率骤降至 1.4%</a></h3>
+      <div class="desc">美国劳工统计局公布4月 PPI 数据，同比涨幅创2022年3月以来最大。受此驱动，市场对美联储6月降息预期从先前 10%+ 骤降至 1.4%，BTC 当日跌破 $80,000 至 $79,500。背景叠加：霍尔木兹海峡供应扰动、油价上行风险持续。分析师 Peter Chung（Presto Labs）称此为"健康整固"而非结构性需求崩塌。</div>
+      <div class="so-what"><strong>So What：</strong>若通胀持续顽固，美联储维持高利率将压制所有风险资产的估值逻辑。CLARITY Act 短期情绪利好抵消了部分宏观利空，但如果 PPI/CPI 数据持续走高，"监管清晰化"的重定价效应将被流动性收缩对冲。</div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta">
+        <div class="cat cat-market">市场</div>
+        <span class="source">2026-05-15 · CoinMarketCap / Phemex</span>
+      </div>
+      <h3><a href="https://phemex.com/news/article/crypto-market-cap-rebounds-to-271-trillion-81589" target="_blank">市场谨慎反弹：总市值重回 $2.69T，BTC 站稳 $81K，FNG 43 仍处恐惧区间</a></h3>
+      <div class="desc">CLARITY Act 通过消息发酵后，加密市场整体反弹，总市值从昨日 $2.648T 回升至 $2.69T（+1.59%）。BTC 报 $81,113（+1.9%），ETH 报 $2,275（+0.51%）。黄金现货受美元走强压制跌至 $4,614/盎司（-1.62%）。恐惧贪婪指数 43 仍处"恐惧"区间，市场情绪谨慎修复但未转向贪婪。</div>
+      <div class="so-what"><strong>So What：</strong>市场对 CLARITY 反应为"受控乐观"而非爆炒——FNG 43 的克制情绪说明资金仍在等待宏观数据与立法最终落地的双重确认。有节制的反弹可能比急涨更健康。</div>
+    </div>
+
+  </div>
+
+  <!-- TREND -->
+  <div class="trend-wrap">
+    <h3>趋势连线</h3>
+    <p><strong>今日主题：立法决战 × 宏观逆风 × 机器经济三线交汇</strong><br><br>
+    本周是加密立法史上最关键的 72 小时。<strong>CLARITY Act 以 15-9 通过参议院银行委员会</strong>，将 CFTC 确立为加密主监管机构，以太坊法律属性趋于明朗，稳定币奖励路径首次在联邦层面落地边界。Coinbase 7.6% 单日暴涨，是华尔街对"监管不确定性折价消除"的直接定价。<br><br>
+    然而市场并没有忘记另一条叙事线：<strong>4月 PPI 四年新高</strong>让美联储降息窗口几乎关闭，BTC ETF 连续大额净流出（$6.35 亿）反映了机构端真实的宏观避险逻辑。这两条力量正在形成对冲——"监管利好"与"流动性收紧"的拉锯，是接下来数周市场的核心摩擦力。<br><br>
+    第三条线更为深远：<strong>AI Agent 间支付突破 $5000 万</strong>，多协议标准战正式打响。x402、AP2、MPP 的竞争，本质上是决定未来 AI 经济基础设施的"收单权"归属。CLARITY 对 DeFi 开发者的保护条款，恰好为这场协议战提供了合规化跑道。三条主线，此刻罕见地同步收束。</p>
+  </div>
+
+</div><!-- /right-col -->
+</div><!-- /layout -->
+
+<div class="footer">
+  数据来源：CoinGecko · 金投网 · CoinMarketCap · Alternative.me · CNBC · Decrypt · The Block · Yahoo Finance · The Agent Times · AInvest · MEXC News
+</div>
+
+</div><!-- /wrap -->
 
 <script>
-// Price data (hardcoded)
 const priceData = {
   btc: {
     dates: ['5/9','5/10','5/11','5/12','5/13','5/14','5/15'],
@@ -374,11 +517,10 @@ const priceData = {
   total: {
     dates: ['5/9','5/10','5/11','5/12','5/13','5/14','5/15'],
     values: [2.690, 2.770, 2.720, 2.718, 2.690, 2.648, 2.690],
-    format: v => '$' + v.toFixed(2) + 'T'
+    format: v => '$' + v.toFixed(3) + 'T'
   }
 };
 
-// Render sparklines
 document.querySelectorAll('.spark-wrap').forEach(wrap => {
   const asset = wrap.dataset.asset;
   const data = priceData[asset];
@@ -388,58 +530,55 @@ document.querySelectorAll('.spark-wrap').forEach(wrap => {
   const max = Math.max(...data.values);
   const min = Math.min(...data.values);
   const range = max - min || 1;
-
   const n = data.values.length;
+
   const lastVal = data.values[n - 1];
   const prevVal = data.values[n - 2];
   const isUp = lastVal >= prevVal;
-  const lineColor = isUp ? '#f85149' : '#3fb950';
-  const fillColor = isUp ? 'rgba(248,81,73,0.12)' : 'rgba(63,185,80,0.12)';
+  const color = isUp ? '#f85149' : '#3fb950';
 
-  const pts = data.values.map((v, i) => {
+  const points = data.values.map((v, i) => {
     const x = (i / (n - 1)) * 100;
-    const y = 22 - ((v - min) / range) * 18 - 2;
-    return { x, y };
-  });
-
-  const polyStr = pts.map(p => `${p.x},${p.y}`).join(' ');
-  const fillPath = `M ${pts[0].x},${pts[0].y} ` + pts.slice(1).map(p => `L ${p.x},${p.y}`).join(' ') + ` L ${pts[n-1].x},24 L ${pts[0].x},24 Z`;
+    const y = 20 - ((v - min) / range) * 16 - 2;
+    return `${x},${y}`;
+  }).join(' ');
 
   svg.innerHTML = `
     <defs>
-      <linearGradient id="grad-${asset}" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="${lineColor}" stop-opacity="0.25"/>
-        <stop offset="100%" stop-color="${lineColor}" stop-opacity="0"/>
+      <linearGradient id="grad-${asset}" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:${color};stop-opacity:0.2"/>
+        <stop offset="100%" style="stop-color:${color};stop-opacity:0"/>
       </linearGradient>
     </defs>
-    <path d="${fillPath}" fill="url(#grad-${asset})"/>
-    <polyline points="${polyStr}" fill="none" stroke="${lineColor}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
-    <circle id="dot-${asset}" cx="-100" cy="-100" r="3" fill="${lineColor}" style="pointer-events:none;"/>
+    <polyline points="${points}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="${points} 100,20 0,20" fill="url(#grad-${asset})"/>
   `;
 
-  // Hover interaction
-  svg.addEventListener('mousemove', e => {
-    const rect = svg.getBoundingClientRect();
-    const relX = (e.clientX - rect.left) / rect.width;
-    const idx = Math.min(Math.round(relX * (n - 1)), n - 1);
-    const pt = pts[idx];
-    const svgX = pt.x / 100 * rect.width;
-    const svgY = pt.y / 24 * rect.height;
+  // Interactive hover dots
+  data.values.forEach((v, i) => {
+    const x = (i / (n - 1)) * 100;
+    const y = 20 - ((v - min) / range) * 16 - 2;
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', x);
+    circle.setAttribute('cy', y);
+    circle.setAttribute('r', '2.5');
+    circle.setAttribute('fill', color);
+    circle.setAttribute('opacity', '0');
+    circle.style.cursor = 'crosshair';
 
-    const dot = svg.querySelector(`#dot-${asset}`);
-    dot.setAttribute('cx', pt.x);
-    dot.setAttribute('cy', pt.y);
-
-    tooltip.textContent = `${data.dates[idx]}: ${data.format(data.values[idx])}`;
-    tooltip.style.left = svgX + 'px';
-    tooltip.style.top = svgY + 'px';
-    tooltip.style.opacity = '1';
-  });
-  svg.addEventListener('mouseleave', () => {
-    tooltip.style.opacity = '0';
-    const dot = svg.querySelector(`#dot-${asset}`);
-    dot.setAttribute('cx', '-100');
-    dot.setAttribute('cy', '-100');
+    circle.addEventListener('mouseenter', e => {
+      circle.setAttribute('opacity', '1');
+      tooltip.textContent = `${data.dates[i]}: ${data.format(v)}`;
+      tooltip.style.display = 'block';
+      const rect = wrap.getBoundingClientRect();
+      tooltip.style.left = (e.clientX - rect.left - 10) + 'px';
+      tooltip.style.top = (e.clientY - rect.top - 34) + 'px';
+    });
+    circle.addEventListener('mouseleave', () => {
+      circle.setAttribute('opacity', '0');
+      tooltip.style.display = 'none';
+    });
+    svg.appendChild(circle);
   });
 });
 </script>
