@@ -634,16 +634,19 @@ function buildSparkline(asset) {
   dot.style.background = dotColor;
 
   svg.addEventListener('mousemove', e => {
-    const rect = wrap.getBoundingClientRect();
-    const relX = (e.clientX - rect.left) / rect.width;
+    // 用 offsetX/offsetWidth 在元素本地坐标系计算，不受 html zoom 影响
+    const localX = e.offsetX;
+    const localW = wrap.offsetWidth;
+    const localH = wrap.offsetHeight;
+    const relX = Math.max(0, Math.min(1, localX / localW));
     const idx = Math.min(Math.round(relX * (n - 1)), n - 1);
     const v = vals[idx];
     const label = data.labels[idx];
 
     const vbX = (idx / (n - 1)) * 100;
     const vbY = 20 - ((v - min) / range) * 16 - 2;
-    const pxX = (vbX / 100) * rect.width;
-    const pxY = (vbY / 20) * rect.height;
+    const pxX = (vbX / 100) * localW;
+    const pxY = (vbY / 20) * localH;
 
     dot.style.display = 'block';
     dot.style.left = pxX + 'px';
@@ -663,7 +666,7 @@ function buildSparkline(asset) {
 
     const tipLeft = pxX + 10;
     const tipRight = tipLeft + tip.offsetWidth;
-    if (tipRight > rect.width) {
+    if (tipRight > localW) {
       tip.style.left = (pxX - tip.offsetWidth - 10) + 'px';
     } else {
       tip.style.left = tipLeft + 'px';
