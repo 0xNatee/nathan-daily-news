@@ -14,10 +14,9 @@
   .container { max-width: 1400px; margin: 0 auto; padding: 16px; }
 
   /* HEADER */
-  .header { background: linear-gradient(135deg, #161b22 0%, #1c2128 100%); border: 1px solid #21262d; border-radius: 14px; padding: 18px 24px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
-  .header-title { font-size: 18px; font-weight: 700; color: #e6edf3; }
-  .header-sub { font-size: 12px; color: #8b949e; margin-top: 3px; }
-  .header-badge { background: #21262d; border: 1px solid #30363d; border-radius: 20px; padding: 4px 12px; font-size: 11px; color: #8b949e; }
+  .header { text-align: center; padding: 24px 0 28px; border-bottom: 1px solid #21262d; margin-bottom: 24px; }
+  .header h1 { font-size: 28px; font-weight: 600; background: linear-gradient(135deg, #58a6ff, #a371f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .header .date { color: #8b949e; font-size: 14px; }
 
   /* LAYOUT */
   .main-layout { display: flex; gap: 20px; }
@@ -98,11 +97,8 @@
 
   <!-- HEADER -->
   <div class="header">
-    <div>
-      <div class="header-title">每日区块链 &amp; 金融科技简报</div>
-      <div class="header-sub">2026年6月2日 · 星期二 · UTC+8</div>
-    </div>
-    <div class="header-badge">Daily Briefing</div>
+    <h1>每日区块链 &amp; 金融科技简报</h1>
+    <div class="date">2026年6月2日 · 星期二 · UTC+8</div>
   </div>
 
   <div class="main-layout">
