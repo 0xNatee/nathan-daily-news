@@ -35,10 +35,14 @@
   .sparkline-container { position:relative; width:100%; height:58px; }
   .sparkline-container svg { width:100%; height:100%; }
   .sparkline-tooltip { position:absolute; background:#1c2128; border:1px solid var(--line); border-radius:6px; padding:4px 8px; font-size:.7rem; color:var(--text); pointer-events:none; opacity:0; transition:opacity .15s; white-space:nowrap; z-index:10; font-family:'SF Mono',monospace; }
-  .gauge-card { padding:20px 18px; text-align:center; margin-top:16px; }
-  .gauge-svg-wrap { width:100%; max-width:220px; margin:0 auto 8px; }
-  .gauge-value { font-size:1.6rem; font-weight:800; font-family:'SF Mono',monospace; }
-  .gauge-label { font-size:.8rem; color:var(--muted); margin-top:2px; }
+  .gauge-card { padding:20px 18px; text-align:center; margin-top:16px; border-radius:0; }
+  .gauge-svg-wrap { width:100%; max-width:240px; margin:0 auto 10px; position:relative; }
+  .gauge-svg-wrap svg { width:100%; height:auto; display:block; }
+  .gauge-side-label { position:absolute; bottom:18px; font-size:.72rem; line-height:1; font-weight:600; }
+  .gauge-side-label.left { left:6px; color:#3fb950; }
+  .gauge-side-label.right { right:6px; color:#f85149; }
+  .gauge-value { font-size:2.05rem; font-weight:800; font-family:'SF Mono',monospace; line-height:1; margin-top:2px; }
+  .gauge-label { font-size:.98rem; color:var(--muted); margin-top:8px; padding-bottom:4px; }
   .data-source { text-align:center; font-size:.68rem; color:var(--soft); margin-top:14px; line-height:1.65; }
   .data-source a { color:var(--soft); text-decoration:none; border-bottom:1px dotted var(--soft); }
   .right-panel { min-width:0; }
@@ -131,9 +135,13 @@
     </div>
     <div class="gauge-card">
       <div class="gauge-title">Crypto Fear &amp; Greed Index</div>
-      <div class="gauge-svg-wrap"><svg viewBox="0 0 200 120" id="gauge-svg"></svg></div>
+      <div class="gauge-svg-wrap">
+        <svg viewBox="0 0 200 120" id="gauge-svg"></svg>
+        <span class="gauge-side-label left">恐惧</span>
+        <span class="gauge-side-label right">贪婪</span>
+      </div>
       <div class="gauge-value">12</div>
-      <div class="gauge-label">Extreme Fear</div>
+      <div class="gauge-label">极度恐惧 · Extreme Fear</div>
     </div>
     <div class="pulse-card">
       <h3>Market Pulse</h3>
@@ -311,11 +319,10 @@ function drawGauge(value) {
   ];
   const arcs = segments.map(s => {
     const a=s.start*Math.PI/180,b=s.end*Math.PI/180;
-    return `<path d="M ${cx+r*Math.cos(a)} ${cy+r*Math.sin(a)} A ${r} ${r} 0 0 1 ${cx+r*Math.cos(b)} ${cy+r*Math.sin(b)}" fill="none" stroke="${s.color}" stroke-width="10" stroke-linecap="round" opacity=".3"/>`;
+    return `<path d="M ${cx+r*Math.cos(a)} ${cy+r*Math.sin(a)} A ${r} ${r} 0 0 1 ${cx+r*Math.cos(b)} ${cy+r*Math.sin(b)}" fill="none" stroke="${s.color}" stroke-width="12" stroke-linecap="butt" opacity="1"/>`;
   }).join("");
   const angle=(180+value*1.8)*Math.PI/180, nx=cx+(r-15)*Math.cos(angle), ny=cy+(r-15)*Math.sin(angle);
-  const color=value<=20?"#3fb950":value<=40?"#56d364":value<=60?"#d29922":value<=80?"#f0883e":"#f85149";
-  svg.innerHTML = `${arcs}<line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="${color}" stroke-width="2.5" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="4" fill="${color}"/>`;
+  svg.innerHTML = `${arcs}<line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="#dfe6ee" stroke-width="2.5" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="5" fill="#dfe6ee"/>`;
 }
 
 ["btc","eth","xau","total","nasdaq","spx","ssec"].forEach(k => {
