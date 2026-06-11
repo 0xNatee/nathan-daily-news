@@ -81,6 +81,10 @@
   .trend-box .tag { background:rgba(163,113,247,.15); color:var(--purple); }
   .trend-box h3 { font-size:.98rem; font-weight:800; margin-bottom:8px; }
   .trend-box p { color:var(--muted); font-size:.8rem; line-height:1.8; }
+  .trend-list { list-style:none; display:grid; gap:10px; margin-top:4px; }
+  .trend-list li { color:var(--muted); font-size:.8rem; line-height:1.72; padding-left:14px; position:relative; }
+  .trend-list li::before { content:''; position:absolute; left:0; top:.62em; width:5px; height:5px; border-radius:50%; background:var(--purple); }
+  .trend-list strong { color:var(--text); }
   .footer { text-align:center; padding:18px 0; border-top:1px solid var(--border); color:var(--soft); font-size:.72rem; max-width:1400px; margin:20px auto 0; }
   @media (max-width:900px) {
     body { padding:10px; }
@@ -247,8 +251,13 @@
 
     <div class="trend-box">
       <span class="tag">趋势连线</span>
-      <h3>市场正在重新定价什么</h3>
-      <p>市场正在重新定价的，是“链上美元和支付权限会不会被 AI 代理直接消费掉”。短期噪声仍然明显：BTC 和 ETH 只是从低位小幅修复，Fear &amp; Greed 仍在 Extreme Fear，说明纯粹的 risk-on 交易没有回来；中期趋势却更明确，Mastercard、Visa、Ripple、三菱 UFJ 们已经不再讨论“要不要碰稳定币”，而是在争抢谁来定义机器支付、跨境结算和 tokenized credentials 的默认接口。能证伪这条判断的信号有两个，一是 agentic commerce 仍停在品牌发布会，没有真实商户和真实分发数据；二是监管把责任过度压到钱包和基础设施层，导致 AI+金融的执行链条在合规上难以落地。</p>
+      <h3>链上美元与机器支付接口的归属，正取代币价成为定价主轴</h3>
+      <ul class="trend-list">
+        <li><strong>核心定价问题：</strong>市场在重估“链上美元与支付权限会不会被 AI 代理直接消费”，焦点从持有哪种币转向谁掌握机器付款的默认接口。</li>
+        <li><strong>短期噪声：</strong>BTC、ETH 仅从低位小幅修复，Fear &amp; Greed 仍处 Extreme Fear（12），纯 risk-on 交易尚未回来，价格层面无新增信号。</li>
+        <li><strong>中期趋势：</strong>Mastercard、Visa、Ripple 与日本三大行已不再讨论“要不要碰稳定币”，而是争夺机器支付、跨境结算与 tokenized credentials 的标准定义权。</li>
+        <li><strong>可证伪信号：</strong>① agentic commerce 若长期停在发布会、缺真实商户与分发数据；② 监管若把责任过度压到钱包与基础设施层，使 AI+金融执行链条在合规上难以落地——任一出现都将削弱上述判断。</li>
+      </ul>
     </div>
   </div>
 </div>
