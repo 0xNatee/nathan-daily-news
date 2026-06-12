@@ -16,7 +16,7 @@
   .header { max-width:1400px; margin:0 auto 20px; padding:24px 0 18px; border-bottom:1px solid var(--border); text-align:center; }
   .eyebrow { display:inline-block; font-size:.68rem; letter-spacing:1.2px; color:var(--blue); background:rgba(88,166,255,.12); padding:4px 10px; border-radius:999px; margin-bottom:10px; text-transform:uppercase; font-weight:700; }
   .header h1 { font-size:2rem; line-height:1.1; font-weight:800; letter-spacing:-0.03em; margin-bottom:8px; }
-  .header .date { color:var(--muted); font-size:.86rem; max-width:1080px; margin:0 auto; }
+  .header .date { color:var(--muted); font-size:.86rem; max-width:1060px; margin:0 auto; }
   .main-layout { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,3fr); gap:20px; max-width:1400px; margin:0 auto; }
   .left-panel { position:sticky; top:16px; align-self:start; }
   .pricing-card,.gauge-card,.news-card,.pulse-card { background:var(--card); border:1px solid var(--border); border-radius:14px; }
@@ -52,6 +52,8 @@
   .headline h2.headline-link { cursor:pointer; transition:color .2s, border-color .2s; display:inline-block; border-bottom:1px solid transparent; }
   .headline h2.headline-link:hover { color:var(--blue); border-bottom-color:var(--blue); }
   .headline h2.headline-link:focus-visible { outline:none; color:var(--blue); border-bottom-color:var(--blue); }
+  .headline h2 a,.news-card h3 a { color:#f0f6fc; text-decoration:none; border-bottom:1px solid transparent; }
+  .headline h2 a:hover,.news-card h3 a:hover { color:var(--blue); border-bottom-color:var(--blue); }
   .headline .subtitle { color:var(--muted); font-size:.8rem; margin-bottom:10px; }
   .headline p { color:var(--muted); font-size:.84rem; line-height:1.75; margin-bottom:12px; }
   .headline ul { list-style:none; display:grid; gap:8px; margin:12px 0; }
@@ -72,8 +74,6 @@
   .cat-defi { background:rgba(219,109,40,.15); color:#db6d28; }
   .cat-market { background:rgba(248,81,73,.15); color:var(--red); }
   .news-card h3 { font-size:.92rem; font-weight:700; margin-bottom:6px; line-height:1.5; }
-  .news-card h3 a { color:#f0f6fc; text-decoration:none; border-bottom:1px solid transparent; }
-  .news-card h3 a:hover { color:var(--blue); border-bottom-color:var(--blue); }
   .desc { color:var(--muted); font-size:.8rem; line-height:1.72; margin-bottom:8px; }
   .so-what { background:rgba(88,166,255,.05); border-left:3px solid var(--line); padding:7px 10px; border-radius:0 6px 6px 0; font-size:.76rem; color:var(--muted); }
   .so-what strong { color:var(--blue); }
@@ -98,28 +98,28 @@
 <div class="header">
   <div class="eyebrow">Research Briefing</div>
   <h1>每日金融科技简报</h1>
-  <div class="date">2026年6月12日 · 周五 · UTC+8 · Visa、Mastercard、Coinbase 与 Ripple 在 48 小时内同时推进 agentic commerce、稳定币结算和链上账户接口，市场开始重估“机器支付入口”会落到谁手里</div>
+  <div class="date">2026年6月12日 · 周五 · UTC+8 · Mastercard、Visa、Coinbase 与日本监管/银行体系几乎同时把 agentic commerce、稳定币结算和 tokenized finance 往前推，市场正在重估“谁控制机器付款与链上美元入口”</div>
 </div>
 <div class="main-layout">
   <div class="left-panel">
     <div class="pricing-card">
-      <div class="card-label"><span class="asset-name">BTC · Bitcoin</span><span class="change-badge badge-up">▲ 较昨日 +2.51%</span></div>
-      <div class="price-value">$63,564</div>
+      <div class="card-label"><span class="asset-name">BTC · Bitcoin</span><span class="change-badge badge-up">▲ 较昨日 +2.64%</span></div>
+      <div class="price-value">$63,641</div>
       <div class="sparkline-container" id="spark-btc"><div class="sparkline-tooltip" id="tip-btc"></div></div>
     </div>
     <div class="pricing-card">
-      <div class="card-label"><span class="asset-name">ETH · Ethereum</span><span class="change-badge badge-up">▲ 较昨日 +2.08%</span></div>
-      <div class="price-value">$1,671</div>
+      <div class="card-label"><span class="asset-name">ETH · Ethereum</span><span class="change-badge badge-up">▲ 较昨日 +2.19%</span></div>
+      <div class="price-value">$1,673</div>
       <div class="sparkline-container" id="spark-eth"><div class="sparkline-tooltip" id="tip-eth"></div></div>
     </div>
     <div class="pricing-card">
-      <div class="card-label"><span class="asset-name">XAU · XAU/USD</span><span class="change-badge badge-up">▲ 较昨日 +3.58%</span></div>
-      <div class="price-value">$4,226.02</div>
+      <div class="card-label"><span class="asset-name">XAU · XAU/USD</span><span class="change-badge badge-up">▲ 较昨日 +2.69%</span></div>
+      <div class="price-value">$4,189.70</div>
       <div class="sparkline-container" id="spark-xau"><div class="sparkline-tooltip" id="tip-xau"></div></div>
     </div>
     <div class="pricing-card">
-      <div class="card-label"><span class="asset-name">加密总市值</span><span class="change-badge badge-up">▲ 较昨日 +2.54%</span></div>
-      <div class="price-value">$2.263T</div>
+      <div class="card-label"><span class="asset-name">加密总市值</span><span class="change-badge badge-up">▲ 较昨日 +2.31%</span></div>
+      <div class="price-value">$2.258T</div>
       <div class="sparkline-container" id="spark-total"><div class="sparkline-tooltip" id="tip-total"></div></div>
     </div>
     <div class="pricing-card">
@@ -134,7 +134,7 @@
     </div>
     <div class="pricing-card">
       <div class="card-label"><span class="asset-name">上证指数</span><span class="change-badge badge-down">▼ 较昨日 -0.16%</span></div>
-      <div class="price-value">3,987.01</div>
+      <div class="price-value">3,987.00</div>
       <div class="sparkline-container" id="spark-ssec"><div class="sparkline-tooltip" id="tip-ssec"></div></div>
     </div>
     <div class="gauge-card">
@@ -150,33 +150,33 @@
     <div class="pulse-card">
       <h3>Market Pulse</h3>
       <ul>
-        <li>价格端：BTC 回到 $63.5k、ETH 回到 $1.67k，上行动能来自超跌修复而不是新增风险偏好；Fear &amp; Greed 仍停在 12，市场情绪没有真正脱离极度恐惧。</li>
-        <li>资产端：加密总市值回升到 $2.263T，美股科技权重同步走强，说明今天的交易更像“AI 权益 + crypto beta”一起回补，而不是单边回流到山寨或纯 DeFi。</li>
-        <li>资金端：ETF 结构继续向 IBIT 和 FBTC 集中，稳定币总盘子维持在 $320B 附近，风险资产修复背后，入口和停泊位都在向头部平台靠拢。</li>
-        <li>叙事端：真正的强主线不是哪条链涨得更快，而是支付网络、交易账户和开发者栈正在同时把 AI 代理接入可执行金融权限。</li>
+        <li>情绪端：Fear &amp; Greed 仍停在 12，说明今天这波回升更像去杠杆后反弹，不是风险偏好已经彻底回来了。</li>
+        <li>价格端：BTC 回到 $63.6k、ETH 回到 $1.67k，加密总市值抬升到 $2.258T；币价企稳的同时，黄金也反弹，说明市场仍在同时买“恢复弹性”和“避险缓冲”。</li>
+        <li>资金端：CoinDesk 6 月 11 日援引 Sygnum 称，近阶段 ETF 赎回更像 cash-and-carry 套利平仓，不完全是资金为 SpaceX 等 IPO 抽离加密仓位。</li>
+        <li>主叙事：今天真正更强的线索仍来自支付网络、交易所、银行与监管同向推进可编程支付和 tokenized finance，市场在重估的是接口权，而不是单个代币弹性。</li>
       </ul>
     </div>
     <div class="data-source">
-      BTC / ETH：CoinGecko Simple Price API（2026-06-12 09:06 UTC+8）<br>
-      加密总市值：CoinGecko Global API（2026-06-12 09:06 UTC+8）<br>
-      XAU/USD：WSJ commodities note / GoldPrice.org，采用 2026-06-12 08:41 UTC+8 可验证报价，09:06 UTC+8 抓取<br>
-      Nasdaq / S&amp;P 500：Google Finance / AP，采用美国市场 2026-06-11 收盘，2026-06-12 09:06 UTC+8 抓取<br>
-      上证指数：上海证券交易所 Market Overview，采用 2026-06-11 16:29 UTC+8 最新可验证点位；情绪：Alternative.me（2026-06-12 09:06 UTC+8）
+      BTC / ETH：Coinlore API（2026-06-12 09:09:49 UTC+8）<br>
+      加密总市值：CoinGecko Global API（2026-06-12 09:09:49 UTC+8）<br>
+      XAU/USD：Gold API（2026-06-12 09:09:22 UTC+8）<br>
+      Nasdaq / S&amp;P 500：美国市场 2026-06-11 收盘，2026-06-12 09:09 UTC+8 通过 AP + Nasdaq/FRED 复核<br>
+      上证指数：Trading Economics 记载的 2026-06-11 最新可验证收盘 3,987 点，2026-06-12 09:09 UTC+8 复核；情绪：Alternative.me（2026-06-12 09:09:49 UTC+8）
     </div>
   </div>
   <div class="right-panel">
     <div class="headline">
-      <span class="tag">今日头条 · 88/100</span>
-      <h2>AI 代理开始拿到真实金融账户：支付网络、链上结算和交易接口在同一窗口争夺“机器支付入口”</h2>
-      <div class="subtitle">6 月 10 日到 11 日之间，Visa、Mastercard、Coinbase 与 Ripple 不是各发了一条独立新闻，而是在同一条结构线上补齐了 agentic commerce 的四个关键环节：身份与评分、支付授权、稳定币结算、链上执行。</div>
-      <p>先看支付网络。Visa 在 6 月 10 日的 Payments Forum 上把 Agent Scoring、Agentic Registry、Large Transaction Model、stablecoin settlement 和 token enhancements 放进同一组发布里，并明确写出“AI is transforming the front end of commerce. Stablecoins are reshaping the back end”。同一天，Mastercard 的 Agent Pay for Machines 由 The Block 披露，目标是让 autonomous AI agents 处理高频小额支付，并把稳定币纳入机器付款的结算选项。</p>
-      <p>再看可执行账户。Coinbase 在 6 月 11 日上线 “Coinbase for Agents”，让 ChatGPT 和 Claude 这类助手在用户设定的风控边界内直接连上 Coinbase 账户做交易、访问数据并逐步发起支付；Ripple 则在 6 月 10 日发布 XRPL AI Starter Kit，把钱包、支付和 agent workflow 直接打包给开发者。换句话说，机器支付不再只停留在 API demo，而是开始碰真实账户、真实支付 rail 和真实链上余额。</p>
+      <span class="tag">今日主线 · 90/100</span>
+      <h2 class="headline-link" tabindex="0" role="link" data-url="https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-launches-agent-pay-for-machines.html">Mastercard、Visa 同步把 Agentic Commerce 写进支付主干网</h2>
+      <div class="subtitle">6 月 10 日到 6 月 11 日最值得放到头条的，不是哪家公司单发一条“AI+支付”公告，而是全球卡组织已经开始把 agentic commerce、稳定币结算、代币化凭证和机器支付权限一起写进网络规则层。</div>
+      <p>把 Mastercard 和 Visa 两条官方更新合起来看，结构才完整。Mastercard 在 6 月 10 日推出 Agent Pay for Machines，明确要让 AI agent 和机器在全球网络里完成高速、低额、持续发生的 programmatic payments，并点名 stablecoins 也是底层支付类型之一。Visa 同日在 Payments Forum 公布 Agent Score、Agentic Directory、Large Transaction Model、token assurance、stablecoin settlement 和 tokenized deposits，同时公开提到与 OpenAI 的战略合作。</p>
+      <p>这说明支付网络的竞争已经不只是“能不能接稳定币”，而是“谁来定义机器付款的身份、权限、风控、凭证和清算方式”。如果再叠加 Coinbase 的 agent 账户、日本把加密资产往金融工具框架里纳入，以及纽约州把 stablecoin regime 正式规则化，今天的主线就很清楚了: agentic commerce 正从产品 demo 进入金融基础设施排位赛。</p>
       <ul>
-        <li>支付网络的竞争焦点，正从“谁支持稳定币”升级到“谁给 AI 代理分配默认支付权限”。</li>
-        <li>交易所和钱包的价值，也从流量入口扩展到 agent orchestration 和 machine-to-machine checkout。</li>
-        <li>如果下一阶段出现真实商户分发数据，agentic commerce 的估值锚会从概念股和中间件，转向支付接口与链上美元控制权。</li>
+        <li>AI 代理开始从“推荐”和“搜索”走向真实支付执行，支付网络必须先补权限和信任层。</li>
+        <li>稳定币的战略位置继续上移，从结算工具升级为机器可调用的 always-on money interface。</li>
+        <li>监管、银行、交易所和卡组织开始围绕同一件事出手: 谁掌握链上美元与机器支付入口，谁就更接近下一阶段分发权。</li>
       </ul>
-      <div class="insight">编辑判断：今天最该看的不是单家公司功能更新，而是“AI 代理何时能合法、可控、可审计地花钱”这件事，已经同时进入卡组织、交易平台和公链工具栈的产品路线图。后续最关键的证伪信号，是这些能力能否在真实商户和真实支付频次上形成分发，而不只是发布会级别的 capability showcase。</div>
+      <div class="insight">编辑判断：今天最该盯的不是“哪条链又拿到合作”，而是卡组织已经把机器付款写进核心网络逻辑。接下来能证实这条主线的信号，是这些能力是否在真实商户、真实余额和真实结算量上出现可量化采用，而不只停在发布会与开发者叙事。</div>
     </div>
 
     <div class="news-section">
@@ -184,23 +184,23 @@
 
       <div class="news-card focus-card">
         <div class="card-header"><span class="category cat-regulation">监管</span><span class="event-date">事件日 06-11</span></div>
-        <h3><a href="https://www.coindesk.com/policy/2026/06/11/japan-passes-sweeping-bill-regulating-crypto-like-stocks-with-lower-taxes-to-drive-growth" target="_blank" rel="noopener">日本众议院通过法案，拟把加密资产纳入《金融商品交易法》框架</a></h3>
-        <div class="desc">CoinDesk 6 月 11 日援引日本金融厅与国会进展称，日本众议院已通过法案，将加密监管从《资金结算法》转向《金融商品交易法》，并引入类股票的内幕交易禁令、信息披露要求和未审计代币融资投资上限。</div>
-        <div class="so-what"><strong>So What：</strong>这不是简单“更严监管”，而是日本正式把 crypto 从支付工具往投资品框架迁移。税负、ETF、券商渠道和合规分销逻辑会被整体重写，对亚洲市场的制度示范意义很强。</div>
+        <h3><a href="https://www.coindesk.com/policy/2026/06/11/japan-passes-sweeping-bill-regulating-crypto-like-stocks-with-lower-taxes-to-drive-growth" target="_blank" rel="noopener">日本议会推进“把加密资产按股票逻辑监管”的法案</a></h3>
+        <div class="desc">CoinDesk 6 月 11 日报道称，日本众议院已通过法案，把 crypto 从《支付服务法》框架切换到《金融商品交易法》框架。新规则预期 2027 年生效，核心变化包括把 crypto 视作金融工具、引入股票式 insider trading 约束、提高未注册经营处罚并为 crypto ETF 留出制度空间。</div>
+        <div class="so-what"><strong>So What：</strong>这不是单纯“监管更严”，而是日本正式把数字资产从支付工具重新定义为投资产品。只要监管归位，税制、ETF、机构分发和银行产品设计就都可能随之松动。</div>
+      </div>
+
+      <div class="news-card focus-card">
+        <div class="card-header"><span class="category cat-regulation">监管</span><span class="event-date">事件日 06-09</span></div>
+        <h3><a href="https://www.dfs.ny.gov/reports_and_publications/press_releases/pr20260609" target="_blank" rel="noopener">纽约州 DFS 发布新 stablecoin 规则草案，对齐 GENIUS Act</a></h3>
+        <div class="desc">NYDFS 在 6 月 9 日宣布拟议监管文本，将 2022 年以来的 backing、redeemability 与审计要求正式规则化，同时新增单一托管机构储备上限和风险管理计划要求，并设置 10 天预征求意见期与 60 天正式征求意见期。</div>
+        <div class="so-what"><strong>So What：</strong>稳定币在美国的竞争焦点正在从“先发谁的币”切到“哪套监管模板先落成可复制框架”。纽约州若抢先把州级 regime 与联邦法衔接好，会继续巩固其作为美元稳定币监管样板间的地位。</div>
       </div>
 
       <div class="news-card focus-card">
         <div class="card-header"><span class="category cat-ai">AI</span><span class="event-date">事件日 06-11</span></div>
-        <h3><a href="https://www.coindesk.com/business/2026/06/11/tether-leads-usd1-4-billion-funding-round-in-german-robotics-company-neura" target="_blank" rel="noopener">Tether 领投 Neura Robotics 14 亿美元融资，把钱包与 physical AI 绑定在一起</a></h3>
-        <div class="desc">CoinDesk 6 月 11 日报道，Tether Investments 领投德国机器人公司 Neura Robotics 14 亿美元融资，参与方包括 Qualcomm、Amazon 和 NVIDIA。Neura 计划到 2030 年生产 500 万台 AI humanoid robots，并为其配备 Tether 关联数字钱包。</div>
-        <div class="so-what"><strong>So What：</strong>稳定币发行方不再只在支付和交易层卷分发，而是开始押注“机器人是否会成为新的金融终端”。如果机器自己收款和付款变成真实场景，钱包形态就会从 App 扩展到设备与机器人。</div>
-      </div>
-
-      <div class="news-card focus-card">
-        <div class="card-header"><span class="category cat-infra">基础设施</span><span class="event-date">事件日 06-11</span></div>
-        <h3><a href="https://www.coindesk.com/business/2026/06/11/canton-network-developer-raises-usd355-million-to-bring-wall-street-onchain" target="_blank" rel="noopener">Canton Network 开发商 Digital Asset 融资 3.55 亿美元，华尔街上链基础设施继续拿钱</a></h3>
-        <div class="desc">Digital Asset 于 6 月 11 日完成 3.55 亿美元融资，a16z 领投，ABN Amro、Apollo Funds、BNP Paribas、Citadel Securities、HSBC、SBI Group 等机构参投。公司强调 Canton 面向受监管市场，主打隐私、合规和互操作性。</div>
-        <div class="so-what"><strong>So What：</strong>资金在用脚投票：机构仍愿意为“适合大行和资本市场的链”持续下注。隐私与合规不再是链上金融的边角参数，而是估值核心。</div>
+        <h3><a href="https://www.coindesk.com/tech/2026/06/11/coinbase-launches-ai-agent-accounts-that-can-trade-and-spend-on-your-behalf" target="_blank" rel="noopener">Coinbase 推出可交易、可支付的 AI Agent 账户</a></h3>
+        <div class="desc">CoinDesk 6 月 11 日称，Coinbase for Agents 已上线，允许 ChatGPT、Claude 等 AI 助手在用户设定的 spending controls 和 risk limits 内访问 Coinbase 账户，执行现货与衍生品交易、调用数据并逐步扩展到支付与购买。平台同时接入 x402 机器支付协议。</div>
+        <div class="so-what"><strong>So What：</strong>如果说卡组织在改支付网络规则，Coinbase 这是把 agent 真正接到账户和执行层。它让“AI 会不会自己花钱”第一次变成产品问题而不是概念问题。</div>
       </div>
     </div>
 
@@ -208,164 +208,148 @@
       <div class="section-title">行业雷达</div>
 
       <div class="news-card">
-        <div class="card-header"><span class="category cat-tradfi">TradFi</span><span class="event-date">事件日 06-11</span></div>
-        <h3><a href="https://www.coindesk.com/business/2026/06/11/citi-opens-new-route-into-private-markets-with-tokenized-share-offering" target="_blank" rel="noopener">Citi 用数字存托凭证切入私募股权代币化分销</a></h3>
-        <div class="desc">CoinDesk 6 月 11 日披露，Citi 正用 blockchain-based digital depositary receipts 连接投资者与 private company equity，把 tokenized shares 的落点从概念性 RWA 扩展到更贴近传统投行和私募市场分发的产品结构。</div>
-        <div class="so-what"><strong>So What：</strong>大行真正想吃的不是单一链上资产，而是私募市场分发、托管和二级流转的收费权。只要代币化开始碰私募股权，券商和托管网络的价值会明显上修。</div>
+        <div class="card-header"><span class="category cat-tradfi">TradFi</span><span class="event-date">事件日 06-10</span></div>
+        <h3><a href="https://www.coindesk.com/business/2026/06/10/japan-s-three-largest-banks-aim-for-joint-stablecoin-issue-by-march" target="_blank" rel="noopener">日本三大银行瞄准 2027 年 3 月前联合推进稳定币</a></h3>
+        <div class="desc">CoinDesk 6 月 10 日报道，MUFG、SMBC 与 Mizuho 将设立 council，研究 joint settlor 模式下的 stablecoin operational framework，并由信托银行或同类机构担任 trustee。日本监管此前已释放支持信号。</div>
+        <div class="so-what"><strong>So What：</strong>这代表稳定币不再只是 fintech 或 crypto-native 公司项目，亚洲大型银行体系已经把它纳入真实清算基础设施议程。</div>
       </div>
 
       <div class="news-card">
         <div class="card-header"><span class="category cat-tradfi">TradFi</span><span class="event-date">事件日 06-11</span></div>
-        <h3><a href="https://www.coindesk.com/business/2026/06/11/big-banks-are-ditching-private-blockchains-to-build-tokenized-cash-networks-on-public-infrastructure" target="_blank" rel="noopener">Sygnum：大行不再等“稳定币赢家”，而是要让存款、稳定币和货币基金代币同层互通</a></h3>
-        <div class="desc">CoinDesk 6 月 11 日引述 Sygnum 表示，UBS、PostFinance 等机构客户的真实需求不是押注单一 tokenized cash 形态，而是要求 regulated stablecoins、tokenized deposits 和 tokenized money market funds 在同一基础设施上互操作。</div>
-        <div class="so-what"><strong>So What：</strong>这意味着银行侧的竞赛逻辑已经从“谁先发币”转向“谁能把多种链上现金工具接成一个 treasury system”。互操作层会比单币市占率更值钱。</div>
+        <h3><a href="https://www.coindesk.com/business/2026/06/11/citi-opens-new-route-into-private-markets-with-tokenized-share-offering" target="_blank" rel="noopener">Citi 用 Digital Depositary Receipts 把私募股权搬上区块链</a></h3>
+        <div class="desc">Citi 6 月 11 日推出 Digital Depositary Receipts，通过由银行发行并托管的区块链证券，让机构和高净值客户获得 private company shares 敞口。首笔交易落在 Kaleido，基础设施由 Swiss market operator SIX 提供。</div>
+        <div class="so-what"><strong>So What：</strong>Wall Street 正在把 tokenization 从“基金份额试点”推进到 pre-IPO 私募股权，这会直接拉高合规托管、链上结算和代币化证券分发的价值。</div>
       </div>
 
       <div class="news-card">
-        <div class="card-header"><span class="category cat-regulation">监管</span><span class="event-date">事件日 06-10</span></div>
-        <h3><a href="https://zodia-custody.com/zodia-custody-secures-luxembourg-payment-institution-licence-approval-to-expand-stablecoin-services/" target="_blank" rel="noopener">Zodia Custody 拿下卢森堡支付机构牌照，稳定币服务开始往欧盟银行级托管延伸</a></h3>
-        <div class="desc">Zodia Custody 的卢森堡 CSSF Payment Institution licence 在 6 月 10 日被多家行业媒体确认，将其既有 MiCA CASP 牌照补齐到 stablecoin custody 与 transfer 场景。公司明确把 Electronic Money Tokens 作为欧洲业务扩展重点。</div>
-        <div class="so-what"><strong>So What：</strong>欧洲稳定币竞争正在从发行端转到“谁有牌照、谁能托管、谁能跨境转移”。对机构来说，链上美元和欧元不是先看叙事，而是先看监管可交付性。</div>
+        <div class="card-header"><span class="category cat-infra">基础设施</span><span class="event-date">事件日 06-11</span></div>
+        <h3><a href="https://www.coindesk.com/business/2026/06/11/canton-network-developer-raises-usd355-million-to-bring-wall-street-onchain" target="_blank" rel="noopener">Canton Network 开发商融资 3.55 亿美元，继续押注机构链上资本市场</a></h3>
+        <div class="desc">Digital Asset 6 月 11 日宣布完成 3.55 亿美元融资，a16z crypto 领投，Apollo Funds、BNP Paribas、Citadel Securities、HSBC、SBI Group 和阿布扎比投资局等参与。公司强调 Canton 的核心卖点仍是 privacy、compliance 和 interoperability。</div>
+        <div class="so-what"><strong>So What：</strong>机构链的竞争并没有退潮，反而因为 tokenized securities 和 bank-led onchain money 升温而重新获得大额资本支持。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-defi">DeFi</span><span class="event-date">事件日 06-11</span></div>
+        <h3><a href="https://www.coindesk.com/business/2026/06/10/ondo-finance-hires-former-invesco-etf-chief-to-build-onchain-investment-products" target="_blank" rel="noopener">Ondo 招揽前 Invesco ETF 负责人，转向链上投资组合产品</a></h3>
+        <div class="desc">CoinDesk 6 月 11 日称，Ondo Finance 聘请前 Invesco ETF 及 Grayscale 高管 John Hoffman，负责从 tokenized stocks 和 Treasuries 向 managed onchain portfolios 扩展。公司称其 tokenized equities 平台已覆盖 250 多只股票和 ETF。</div>
+        <div class="so-what"><strong>So What：</strong>RWA 不再满足于单资产映射，下一步是把 ETF 逻辑和组合分发能力整体迁到链上，这会让 DeFi 与资管产品线更深地接轨。</div>
       </div>
 
       <div class="news-card">
         <div class="card-header"><span class="category cat-regulation">监管</span><span class="event-date">事件日 06-11</span></div>
-        <h3><a href="https://gooden.house.gov/press-releases?ID=5E9EB071-9CFD-4611-9930-6A668031BA7E" target="_blank" rel="noopener">美国众议员提出跨部门加密盗窃特别工作组法案</a></h3>
-        <div class="desc">Gooden 与 Gottheimer 于 6 月 11 日提出《Federal Cryptocurrency Theft Enforcement and Coordination Act》，拟在 DOJ 下设 Federal Cryptocurrency Theft Task Force，协调 DOJ、DHS、Treasury 与联邦执法部门统一处理 crypto theft 案件，并建立取证与 victim support playbook。</div>
-        <div class="so-what"><strong>So What：</strong>美国政策重心开始从“代币是不是证券”外溢到“链上犯罪怎么联邦协同处置”。这会直接影响交易所、托管、钱包和合规 SaaS 的风控预算与对接流程。</div>
+        <h3><a href="https://gooden.house.gov/press-releases?ID=5E9EB071-9CFD-4611-9930-6A668031BA7E" target="_blank" rel="noopener">美国众议院提出跨机构加密盗窃执法协同法案</a></h3>
+        <div class="desc">6 月 11 日提出的 Federal Cryptocurrency Theft Enforcement and Coordination Act 计划在 DOJ 下设 Task Force，联动 DOJ、DHS、Treasury 和联邦执法机构，建立 evidence collection、blockchain forensics 与 victim support 的统一协调机制。发起方引用 FBI 2025 Internet Crime Report 称，美国人去年报告的 crypto 相关损失超过 110 亿美元。</div>
+        <div class="so-what"><strong>So What：</strong>这类法案不直接决定币价，但会影响机构和散户对“出了事谁负责、谁来兜底”的预期，属于加密金融基础信任层建设。</div>
       </div>
 
       <div class="news-card">
-        <div class="card-header"><span class="category cat-market">市场</span><span class="event-date">事件日 06-10</span></div>
-        <h3><a href="https://www.coindesk.com/markets/2026/06/10/blackrock-and-fidelity-are-quietly-turning-bitcoin-etfs-into-a-two-firm-market" target="_blank" rel="noopener">比特币 ETF 资金入口越来越像双寡头：IBIT 与 FBTC 正边缘化小发行人</a></h3>
-        <div class="desc">CoinDesk 6 月 10 日统计称，BlackRock 的 IBIT 与 Fidelity 的 FBTC 频繁拿走大部分新增资金；1 月 14 日两者合计占当日 90% 以上净流入，4 月 17 日也拿走约三分之二的新资金。ETF 市场的“多发起人竞争”正在变成分发和流动性主导的 winner-take-most 结构。</div>
-        <div class="so-what"><strong>So What：</strong>加密牛熊切换时，谁掌握机构入口会比谁讲故事更重要。ETF 赛道集中度提升，意味着后续资金流判断要更看头部资管渠道，而不是泛化看“ETF 总体”。</div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-header"><span class="category cat-defi">DeFi</span><span class="event-date">事件日 06-10</span></div>
-        <h3><a href="https://www.coindesk.com/tech/2026/06/10/a-bitcoin-defi-project-just-shut-down-with-a-brutal-post-mortem-users-just-didn-t-care" target="_blank" rel="noopener">Botanix 关闭主网，Bitcoin DeFi 再次被真实需求打脸</a></h3>
-        <div class="desc">CoinDesk 6 月 10 日报道，Bitcoin layer-2 / DeFi 项目 Botanix 宣布关停，复盘核心结论是 “It did not work”，并把原因归结为市场环境与用户对比特币原生可编程金融需求不足。项目曾两轮融资约 1440 万美元，但停运时 TVL 仅约 11.95 万美元。</div>
-        <div class="so-what"><strong>So What：</strong>这类 shutdown 比融资新闻更有信息含量。它提醒市场，Bitcoin narrative 能否转成真实金融使用，并不会因为“兼容 EVM”这类技术卖点自动成立。</div>
+        <div class="card-header"><span class="category cat-market">市场</span><span class="event-date">事件日 06-09</span></div>
+        <h3><a href="https://www.coindesk.com/markets/2026/06/09/bitcoin-inflows-slow-sharply-in-2026-as-investors-chase-ai-bernstein-says" target="_blank" rel="noopener">Bernstein：2026 年比特币资金流明显放缓，AI 资产在吸走注意力</a></h3>
+        <div class="desc">Bernstein 在 6 月 9 日报告中称，Bitcoin treasury companies 和 ETF 年内合计流入约 120 亿美元，远低于 2025 年的 600 亿美元；ETF 自 750 亿美元资产基数里出现约 26 亿美元净流出。报告把主因归结为投资者追逐 AI 相关机会，而不是量子计算恐慌。</div>
+        <div class="so-what"><strong>So What：</strong>这解释了为什么加密价格承压时，市场最强叙事反而来自 tokenized equities、agentic commerce 和 AI+金融交叉，而不是纯比特币 beta。</div>
       </div>
 
       <div class="news-card">
         <div class="card-header"><span class="category cat-infra">基础设施</span><span class="event-date">事件日 06-09</span></div>
-        <h3><a href="https://www.coindesk.com/research/stablecoins-and-tokenized-asset-report-may-2026" target="_blank" rel="noopener">RWA 代币化升至 289 亿美元，稳定币总市值扩张到 3200 亿美元</a></h3>
-        <div class="desc">CoinDesk Research 于 6 月 9 日发布的月报称，tokenized assets 在 5 月升至 289 亿美元、连续第十个月创新高，stablecoin market cap 同期扩张到 3200 亿美元。这组底层数据解释了为什么支付网络、银行和券商会在本周同时加快链上金融部署。</div>
-        <div class="so-what"><strong>So What：</strong>当底盘先长出来，头部机构就会从“试验链上能力”转到“争夺链上分发权”。今天的主线并不是空中楼阁，它有持续扩张的资产基数托着。</div>
+        <h3><a href="https://www.coindesk.com/research/stablecoins-and-tokenized-asset-report-may-2026" target="_blank" rel="noopener">RWA Tokenization 升至 289 亿美元，稳定币市值扩至 3200 亿美元</a></h3>
+        <div class="desc">CoinDesk Research 在 6 月 9 日发布的月报里给出两组底层数字: tokenized assets 在 5 月升到 289 亿美元，连续第十个月创新高；稳定币市值继续扩大到约 3200 亿美元。它不是单条 breaking news，但解释了为什么支付巨头、银行和券商会在同一周密集升级链上产品。</div>
+        <div class="so-what"><strong>So What：</strong>当底层盘子已经长到这个量级，链上金融就不再是边角创新，而是传统支付与资本市场必须正面应对的基础设施变量。</div>
       </div>
     </div>
 
     <div class="trend-box">
       <span class="tag">趋势连线</span>
-      <h3>市场在重新定价的，不只是加密资产，而是“谁能让机器安全地持有、调用并结算价值”</h3>
+      <h3>市场正在从“哪种币涨得更快”切到“谁掌握机器付款和链上资产入口”</h3>
       <ul class="trend-list">
-        <li><strong>核心判断：</strong>支付网络、交易账户和 tokenized cash infra 正在同步向 AI 代理开放，链上美元、支付权限和风险控制会一起变成新的平台护城河。</li>
-        <li><strong>短期噪声：</strong>BTC 和美股科技权重今天一起反弹，但 Fear &amp; Greed 仍在 12，说明价格修复还不足以证明资金重新进入高 beta 和长久期叙事。</li>
-        <li><strong>中期趋势：</strong>日本监管迁移、欧洲牌照扩展、机构链融资、私募股权代币化与 AI 账户产品放在一起看，说明传统金融不再把链上能力当附属插件，而是开始重写产品分发和清算逻辑。</li>
-        <li><strong>可证伪信号：</strong>如果 agentic commerce 长期没有真实支付频次、真实商户分发和可验证的稳定币结算数据，或者监管把责任过度压给钱包与平台入口，这条主线会快速降温。</li>
+        <li><strong>今天被重新定价的核心变量：</strong>支付网络、交易账户、银行结算和 tokenized securities 是否能被 AI agent 直接调用，以及默认入口会落在谁手里。</li>
+        <li><strong>短期噪声：</strong>BTC、ETH 和美股科技指数同步反弹，说明去杠杆后的压制暂时缓和；但 Fear &amp; Greed 仍在 12，市场情绪并未真正恢复到 risk-on。</li>
+        <li><strong>中期趋势：</strong>卡组织在补 agent 权限层，交易所在补 agent 执行层，银行和监管在补 stablecoin / tokenized asset 合规层，三个层面开始同向推进，链上金融正变成“可编程金融接口”竞争。</li>
+        <li><strong>可证伪信号：</strong>① agentic commerce 长期停在发布会和试验项目，真实商户、真实余额、真实结算量迟迟不上来；② 监管把责任过度压到钱包、基础设施或发行方某一层，导致业务难以规模化。任一出现，都可能让这条主线降温。</li>
       </ul>
     </div>
   </div>
 </div>
-
 <div class="footer">
-  <p>每日金融科技简报 · 信息仅供参考，不构成投资建议</p>
-  <p style="margin-top:4px;">新闻来源：Visa · Mastercard · Coinbase · Ripple · CoinDesk · Gooden House · Japan FSA · Zodia Custody · Google Finance</p>
+  <p>每日金融科技简报 · 事实与观点已分层呈现 · 不构成投资建议</p>
+  <p style="margin-top:4px;">来源：Mastercard · Visa · New York State Department of Financial Services · CoinDesk · Congressman Lance Gooden</p>
 </div>
-
 <script>
 const priceData = {
-  btc: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [60884.62,63332.01,63141.99,63314.89,61826.05,62005.99,63564.00], format: v => "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 0}) },
-  eth: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [1569.69,1690.51,1685.00,1699.41,1641.76,1636.97,1671.07], format: v => "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 0}) },
-  xau: { dates: ["6/5","6/6","6/7","6/9","6/10","6/11","6/12"], values: [4329.33,4343.98,4329.85,4222.10,4212.27,4080.12,4226.02], format: v => "$" + Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
-  total: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [2.101,2.096,2.171,2.180,2.130,2.207,2.263], format: v => "$" + Number(v).toFixed(3) + "T" },
-  nasdaq: { dates: ["6/2","6/3","6/4","6/5","6/8","6/10","6/11"], values: [27093.90,26853.98,26830.96,25709.43,25929.66,25169.50,25809.66], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
-  spx: { dates: ["6/2","6/3","6/4","6/5","6/8","6/10","6/11"], values: [7609.78,7553.68,7584.31,7383.84,7405.62,7267.07,7394.30], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
-  ssec: { dates: ["6/3","6/4","6/5","6/8","6/9","6/10","6/11"], values: [4083.97,4057.78,4027.74,3959.34,4010.03,3993.23,3987.01], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }
+  btc: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [60884.62, 63332.01, 63141.99, 63314.89, 61826.05, 62005.99, 63640.68], format: v => "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 0}) },
+  eth: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [1569.69, 1690.51, 1685.00, 1699.41, 1641.76, 1636.97, 1672.82], format: v => "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 0}) },
+  xau: { dates: ["6/5","6/6","6/7","6/9","6/10","6/11","6/12"], values: [4329.33, 4343.98, 4329.85, 4222.10, 4212.27, 4080.12, 4189.70], format: v => "$" + Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
+  total: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [2.101, 2.096, 2.171, 2.180, 2.130, 2.207, 2.258], format: v => "$" + Number(v).toFixed(3) + "T" },
+  nasdaq: { dates: ["6/3","6/4","6/5","6/8","6/9","6/10","6/11"], values: [26853.98, 26830.96, 25709.43, 25929.66, 25678.82, 25169.50, 25809.66], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
+  spx: { dates: ["6/3","6/4","6/5","6/8","6/9","6/10","6/11"], values: [7553.68, 7584.31, 7383.84, 7405.62, 7386.65, 7267.07, 7394.30], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
+  ssec: { dates: ["6/3","6/4","6/5","6/8","6/9","6/10","6/11"], values: [4083.97, 4057.78, 4027.74, 3959.34, 4010.03, 3993.23, 3987.00], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }
 };
 
 function createSparkline(containerId, tooltipId, data) {
   const container = document.getElementById(containerId);
   const tooltip = document.getElementById(tooltipId);
-  const values = data.values;
-  const dates = data.dates;
-  const w = container.offsetWidth || 300;
-  const h = 58;
+  const values = data.values, dates = data.dates;
+  const w = container.offsetWidth || 300, h = 58;
   const padding = { top: 8, bottom: 8, left: 4, right: 4 };
-  const plotW = w - padding.left - padding.right;
-  const plotH = h - padding.top - padding.bottom;
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-  const range = max - min || 1;
+  const plotW = w - padding.left - padding.right, plotH = h - padding.top - padding.bottom;
+  const min = Math.min(...values), max = Math.max(...values), range = max - min || 1;
   const points = values.map((v, i) => {
-    const x = padding.left + (i * plotW / (values.length - 1));
-    const y = padding.top + ((max - v) / range) * plotH;
+    const x = padding.left + (plotW * i / (values.length - 1 || 1));
+    const y = padding.top + (max - v) / range * plotH;
     return { x, y, v, d: dates[i] };
   });
-  const isUp = values[values.length - 1] >= values[values.length - 2];
-  const color = isUp ? "#f85149" : "#3fb950";
-  const path = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
+  const color = values[values.length - 1] >= values[values.length - 2] ? "#f85149" : "#3fb950";
+  const area = points.map((p, i) => (i ? "L" : "M") + p.x + "," + p.y).join(" ") + ` L ${points[points.length-1].x},${h-padding.bottom} L ${points[0].x},${h-padding.bottom} Z`;
+  const line = points.map((p, i) => (i ? "L" : "M") + p.x + "," + p.y).join(" ");
   container.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
-    <path d="${path}" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+    <defs><linearGradient id="grad-${containerId}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${color}" stop-opacity="0.28"/><stop offset="100%" stop-color="${color}" stop-opacity="0.02"/></linearGradient></defs>
+    <path d="${area}" fill="url(#grad-${containerId})"></path>
+    <path d="${line}" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
   </svg><div class="sparkline-tooltip" id="${tooltipId}"></div>`;
-  const newTooltip = document.getElementById(tooltipId);
+  const newTip = document.getElementById(tooltipId);
   const svg = container.querySelector("svg");
-  svg.addEventListener("mousemove", (e) => {
+  svg.addEventListener("mousemove", e => {
     const rect = svg.getBoundingClientRect();
     const x = e.clientX - rect.left;
-    let idx = 0;
-    let best = Infinity;
-    points.forEach((p, i) => {
-      const dist = Math.abs((p.x / w) * rect.width - x);
-      if (dist < best) { best = dist; idx = i; }
-    });
+    const idx = Math.max(0, Math.min(points.length - 1, Math.round((x / rect.width) * (points.length - 1))));
     const p = points[idx];
-    newTooltip.textContent = `${p.d}  ${data.format(p.v)}`;
-    newTooltip.style.left = `${Math.min(Math.max(8, x + 10), rect.width - 120)}px`;
-    newTooltip.style.top = `${Math.max(2, (p.y / h) * rect.height - 26)}px`;
-    newTooltip.style.opacity = 1;
+    newTip.style.opacity = 1;
+    newTip.innerHTML = `${p.d}<br>${data.format(p.v)}`;
+    newTip.style.left = Math.min(rect.width - 72, Math.max(0, p.x - 36)) + "px";
+    newTip.style.top = Math.max(0, p.y - 42) + "px";
   });
-  svg.addEventListener("mouseleave", () => { newTooltip.style.opacity = 0; });
+  svg.addEventListener("mouseleave", () => { newTip.style.opacity = 0; });
 }
 
-function drawGauge(value, label) {
-  const svg = document.getElementById("gauge-svg");
-  const cx = 100, cy = 100, r = 70;
-  const start = Math.PI, end = 2 * Math.PI;
-  const angle = start + (value / 100) * Math.PI;
-  const x = cx + r * Math.cos(angle);
-  const y = cy + r * Math.sin(angle);
-  const bg = `M ${cx-r} ${cy} A ${r} ${r} 0 0 1 ${cx+r} ${cy}`;
-  const fg = `M ${cx-r} ${cy} A ${r} ${r} 0 ${value > 50 ? 1 : 0} 1 ${x} ${y}`;
-  let color = "#3fb950";
-  if (value >= 50 && value < 75) color = "#d29922";
-  if (value >= 75) color = "#f85149";
-  svg.innerHTML = `
-    <path d="${bg}" stroke="#30363d" stroke-width="14" fill="none" stroke-linecap="round"></path>
-    <path d="${fg}" stroke="${color}" stroke-width="14" fill="none" stroke-linecap="round"></path>
-    <circle cx="${x}" cy="${y}" r="6" fill="${color}"></circle>
-  `;
-  document.querySelector(".gauge-value").textContent = value;
-  document.querySelector(".gauge-label").textContent = label;
+function drawGauge(value) {
+  const svg = document.getElementById("gauge-svg"), cx = 100, cy = 95, r = 75;
+  const segments = [
+    {start:180,end:216,color:"#3fb950"}, {start:216,end:252,color:"#56d364"},
+    {start:252,end:288,color:"#d29922"}, {start:288,end:324,color:"#f0883e"},
+    {start:324,end:360,color:"#f85149"}
+  ];
+  const arcs = segments.map(s => {
+    const a=s.start*Math.PI/180,b=s.end*Math.PI/180;
+    return `<path d="M ${cx+r*Math.cos(a)} ${cy+r*Math.sin(a)} A ${r} ${r} 0 0 1 ${cx+r*Math.cos(b)} ${cy+r*Math.sin(b)}" fill="none" stroke="${s.color}" stroke-width="12" stroke-linecap="butt" opacity="1"/>`;
+  }).join("");
+  const angle=(180+value*1.8)*Math.PI/180, nx=cx+(r-15)*Math.cos(angle), ny=cy+(r-15)*Math.sin(angle);
+  svg.innerHTML = `${arcs}<line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="#dfe6ee" stroke-width="2.5" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="5" fill="#dfe6ee"/>`;
 }
 
-Object.entries(priceData).forEach(([key, value]) => createSparkline(`spark-${key}`, `tip-${key}`, value));
-drawGauge(12, "极度恐惧 · Extreme Fear");
-
-document.querySelectorAll(".headline-link").forEach((el) => {
-  const url = el.dataset.url;
-  if (!url) return;
-  const open = () => window.open(url, "_blank", "noopener");
-  el.addEventListener("click", open);
-  el.addEventListener("keydown", (e) => {
+["btc","eth","xau","total","nasdaq","spx","ssec"].forEach(k => {
+  createSparkline("spark-"+k, "tip-"+k, priceData[k]);
+});
+drawGauge(12);
+const headlineLink = document.querySelector(".headline-link");
+if (headlineLink) {
+  const openHeadline = () => window.open(headlineLink.dataset.url, "_blank", "noopener");
+  headlineLink.addEventListener("click", openHeadline);
+  headlineLink.addEventListener("keydown", e => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      open();
+      openHeadline();
     }
   });
-});
+}
 </script>
 </body>
 </html>
