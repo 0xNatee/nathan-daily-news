@@ -103,23 +103,23 @@
 <div class="main-layout">
   <div class="left-panel">
     <div class="pricing-card">
-      <div class="card-label"><span class="asset-name">BTC · Bitcoin</span><span class="change-badge badge-up">▲ 较昨日 +2.64%</span></div>
-      <div class="price-value">$63,641</div>
+      <div class="card-label"><span class="asset-name">BTC · Bitcoin</span><span class="change-badge badge-up">▲ 较昨日 +2.27%</span></div>
+      <div class="price-value">$63,416</div>
       <div class="sparkline-container" id="spark-btc"><div class="sparkline-tooltip" id="tip-btc"></div></div>
     </div>
     <div class="pricing-card">
-      <div class="card-label"><span class="asset-name">ETH · Ethereum</span><span class="change-badge badge-up">▲ 较昨日 +2.19%</span></div>
-      <div class="price-value">$1,673</div>
+      <div class="card-label"><span class="asset-name">ETH · Ethereum</span><span class="change-badge badge-up">▲ 较昨日 +1.86%</span></div>
+      <div class="price-value">$1,667</div>
       <div class="sparkline-container" id="spark-eth"><div class="sparkline-tooltip" id="tip-eth"></div></div>
     </div>
     <div class="pricing-card">
-      <div class="card-label"><span class="asset-name">XAU · XAU/USD</span><span class="change-badge badge-up">▲ 较昨日 +2.69%</span></div>
-      <div class="price-value">$4,189.70</div>
+      <div class="card-label"><span class="asset-name">XAU · XAU/USD</span><span class="change-badge badge-up">▲ 较昨日 +2.63%</span></div>
+      <div class="price-value">$4,187.40</div>
       <div class="sparkline-container" id="spark-xau"><div class="sparkline-tooltip" id="tip-xau"></div></div>
     </div>
     <div class="pricing-card">
-      <div class="card-label"><span class="asset-name">加密总市值</span><span class="change-badge badge-up">▲ 较昨日 +2.31%</span></div>
-      <div class="price-value">$2.258T</div>
+      <div class="card-label"><span class="asset-name">加密总市值</span><span class="change-badge badge-up">▲ 较昨日 +2.24%</span></div>
+      <div class="price-value">$2.256T</div>
       <div class="sparkline-container" id="spark-total"><div class="sparkline-tooltip" id="tip-total"></div></div>
     </div>
     <div class="pricing-card">
@@ -157,11 +157,11 @@
       </ul>
     </div>
     <div class="data-source">
-      BTC / ETH：Coinlore API（2026-06-12 09:09:49 UTC+8）<br>
-      加密总市值：CoinGecko Global API（2026-06-12 09:09:49 UTC+8）<br>
-      XAU/USD：Gold API（2026-06-12 09:09:22 UTC+8）<br>
-      Nasdaq / S&amp;P 500：美国市场 2026-06-11 收盘，2026-06-12 09:09 UTC+8 通过 AP + Nasdaq/FRED 复核<br>
-      上证指数：Trading Economics 记载的 2026-06-11 最新可验证收盘 3,987 点，2026-06-12 09:09 UTC+8 复核；情绪：Alternative.me（2026-06-12 09:09:49 UTC+8）
+      BTC / ETH：CoinGecko Simple Price API（2026-06-12 09:14 UTC+8）<br>
+      加密总市值：CoinGecko Global API（2026-06-12 09:14 UTC+8）<br>
+      XAU/USD：Gold API（2026-06-12 09:14 UTC+8）<br>
+      Nasdaq / S&amp;P 500：美国市场 2026-06-11 收盘，2026-06-12 09:04 UTC+8 通过 Investing.com + FRED / Yahoo Finance 历史数据复核<br>
+      上证指数：采用 2026-06-11 最近可验证收盘 3,987.01，2026-06-12 09:04 UTC+8 复核；情绪：Alternative.me（2026-06-12 09:03 UTC+8）
     </div>
   </div>
   <div class="right-panel">
@@ -275,13 +275,13 @@
 </div>
 <script>
 const priceData = {
-  btc: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [60884.62, 63332.01, 63141.99, 63314.89, 61826.05, 62005.99, 63640.68], format: v => "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 0}) },
-  eth: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [1569.69, 1690.51, 1685.00, 1699.41, 1641.76, 1636.97, 1672.82], format: v => "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 0}) },
-  xau: { dates: ["6/5","6/6","6/7","6/9","6/10","6/11","6/12"], values: [4329.33, 4343.98, 4329.85, 4222.10, 4212.27, 4080.12, 4189.70], format: v => "$" + Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
-  total: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [2.101, 2.096, 2.171, 2.180, 2.130, 2.207, 2.258], format: v => "$" + Number(v).toFixed(3) + "T" },
+  btc: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [60884.62, 63332.01, 63141.99, 63314.89, 61826.05, 62005.99, 63416.00], format: v => "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 0}) },
+  eth: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [1569.69, 1690.51, 1685.00, 1699.41, 1641.76, 1636.97, 1667.35], format: v => "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 0}) },
+  xau: { dates: ["6/5","6/6","6/7","6/9","6/10","6/11","6/12"], values: [4329.33, 4343.98, 4329.85, 4222.10, 4212.27, 4080.12, 4187.40], format: v => "$" + Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
+  total: { dates: ["6/6","6/7","6/8","6/9","6/10","6/11","6/12"], values: [2.101, 2.096, 2.171, 2.180, 2.130, 2.207, 2.256], format: v => "$" + Number(v).toFixed(3) + "T" },
   nasdaq: { dates: ["6/3","6/4","6/5","6/8","6/9","6/10","6/11"], values: [26853.98, 26830.96, 25709.43, 25929.66, 25678.82, 25169.50, 25809.66], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
-  spx: { dates: ["6/3","6/4","6/5","6/8","6/9","6/10","6/11"], values: [7553.68, 7584.31, 7383.84, 7405.62, 7386.65, 7267.07, 7394.30], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
-  ssec: { dates: ["6/3","6/4","6/5","6/8","6/9","6/10","6/11"], values: [4083.97, 4057.78, 4027.74, 3959.34, 4010.03, 3993.23, 3987.00], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }
+  spx: { dates: ["6/3","6/4","6/5","6/8","6/9","6/10","6/11"], values: [7553.68, 7584.31, 7383.84, 7405.62, 7386.65, 7267.07, 7394.07], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
+  ssec: { dates: ["6/3","6/4","6/5","6/8","6/9","6/10","6/11"], values: [4083.97, 4057.78, 4027.74, 3959.34, 4010.03, 3993.23, 3987.01], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }
 };
 
 function createSparkline(containerId, tooltipId, data) {
