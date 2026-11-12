@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日金融科技简报 | 2026年11月12日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0d1117; --card: #161b22; --card-2:#11161c; --border:#21262d; --line:#30363d;
+    --text:#e6edf3; --muted:#8b949e; --soft:#656d76; --blue:#58a6ff; --purple:#a371f7;
+    --red:#f85149; --green:#3fb950; --gold:#d29922;
+  }
+  body { font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; min-height:100vh; padding:16px; }
+  a { color: inherit; }
+  .header { max-width:1400px; margin:0 auto 20px; padding:24px 0 18px; border-bottom:1px solid var(--border); text-align:center; }
+  .eyebrow { display:inline-block; font-size:.68rem; letter-spacing:1.2px; color:var(--blue); background:rgba(88,166,255,.12); padding:4px 10px; border-radius:999px; margin-bottom:10px; text-transform:uppercase; font-weight:700; }
+  .header h1 { font-size:2rem; line-height:1.1; font-weight:800; letter-spacing:-0.03em; margin-bottom:8px; }
+  .header .date { color:var(--muted); font-size:.86rem; max-width:1060px; margin:0 auto; }
+  .main-layout { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,3fr); gap:20px; max-width:1400px; margin:0 auto; }
+  .left-panel { position:sticky; top:16px; align-self:start; }
+  .pricing-card,.gauge-card,.news-card,.pulse-card { background:var(--card); border:1px solid var(--border); border-radius:14px; }
+  .pricing-card { padding:18px; margin-bottom:14px; }
+  .pulse-card { padding:16px 18px; margin-top:16px; }
+  .pulse-card h3,.gauge-title,.section-title { font-size:.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px; font-weight:700; }
+  .pulse-card ul { list-style:none; margin-top:10px; display:grid; gap:8px; }
+  .pulse-card li { color:var(--muted); font-size:.78rem; line-height:1.6; padding-left:12px; position:relative; }
+  .pulse-card li::before { content:'•'; color:var(--blue); position:absolute; left:0; }
+  .card-label { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px; }
+  .asset-name { font-size:.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; font-weight:700; }
+  .change-badge { font-size:.72rem; font-weight:700; padding:2px 8px; border-radius:10px; white-space:nowrap; }
+  .badge-up { background:rgba(248,81,73,.12); color:var(--red); }
+  .badge-down { background:rgba(63,185,80,.12); color:var(--green); }
+  .badge-flat { background:rgba(139,148,158,.15); color:var(--muted); }
+  .price-value { font-size:1.36rem; font-weight:800; font-family:'SF Mono','Fira Code',monospace; margin-bottom:12px; }
+  .sparkline-container { position:relative; width:100%; height:58px; }
+  .sparkline-container svg { width:100%; height:100%; }
+  .sparkline-tooltip { position:absolute; background:#1c2128; border:1px solid var(--line); border-radius:6px; padding:4px 8px; font-size:.7rem; color:var(--text); pointer-events:none; opacity:0; transition:opacity .15s; white-space:nowrap; z-index:10; font-family:'SF Mono',monospace; }
+  .gauge-card { padding:20px 18px; text-align:center; margin-top:16px; border-radius:0; }
+  .gauge-svg-wrap { width:100%; max-width:240px; margin:0 auto 10px; position:relative; }
+  .gauge-svg-wrap svg { width:100%; height:auto; display:block; }
+  .gauge-side-label { position:absolute; bottom:18px; font-size:.72rem; line-height:1; font-weight:600; }
+  .gauge-side-label.left { left:6px; color:#3fb950; }
+  .gauge-side-label.right { right:6px; color:#f85149; }
+  .gauge-value { font-size:2.05rem; font-weight:800; font-family:'SF Mono',monospace; line-height:1; margin-top:2px; }
+  .gauge-label { font-size:.98rem; color:var(--muted); margin-top:8px; padding-bottom:4px; }
+  .data-source { text-align:center; font-size:.68rem; color:var(--soft); margin-top:14px; line-height:1.65; }
+  .data-source a { color:var(--soft); text-decoration:none; border-bottom:1px dotted var(--soft); }
+  .right-panel { min-width:0; }
+  .headline { background:linear-gradient(135deg,#1b2230 0%,#141920 100%); border:1px solid var(--line); border-left:4px solid var(--blue); border-radius:14px; padding:20px; margin-bottom:20px; }
+  .headline .tag,.trend-box .tag { display:inline-block; background:rgba(88,166,255,.12); color:var(--blue); font-size:.68rem; font-weight:700; padding:3px 9px; border-radius:999px; margin-bottom:10px; letter-spacing:.5px; }
+  .headline h2 { font-size:1.22rem; line-height:1.35; font-weight:800; margin-bottom:8px; }
+  .headline h2 a,.news-card h3 a { color:#f0f6fc; text-decoration:none; border-bottom:1px solid transparent; }
+  .headline h2 a:hover,.news-card h3 a:hover { color:var(--blue); border-bottom-color:var(--blue); }
+  .headline .subtitle { color:var(--muted); font-size:.8rem; margin-bottom:10px; }
+  .headline p { color:var(--muted); font-size:.84rem; line-height:1.75; margin-bottom:12px; }
+  .headline ul { list-style:none; display:grid; gap:8px; margin:12px 0; }
+  .headline li { color:var(--muted); font-size:.8rem; line-height:1.6; padding-left:14px; position:relative; }
+  .headline li::before { content:'•'; color:var(--blue); position:absolute; left:0; }
+  .headline .insight { background:rgba(88,166,255,.06); border-left:3px solid var(--line); padding:9px 12px; border-radius:0 8px 8px 0; color:var(--text); font-size:.8rem; line-height:1.7; }
+  .news-section { margin-bottom:22px; }
+  .section-title { margin-bottom:12px; padding-left:4px; }
+  .news-card { padding:16px 18px; margin-bottom:10px; }
+  .focus-card { background:linear-gradient(180deg, #171d25 0%, #161b22 100%); }
+  .card-header { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px; }
+  .category { font-size:.65rem; font-weight:700; padding:2px 8px; border-radius:10px; }
+  .event-date { color:var(--soft); font-size:.66rem; }
+  .cat-regulation { background:rgba(210,153,34,.15); color:var(--gold); }
+  .cat-ai { background:rgba(163,113,247,.15); color:var(--purple); }
+  .cat-tradfi { background:rgba(88,166,255,.15); color:var(--blue); }
+  .cat-infra { background:rgba(63,185,80,.15); color:var(--green); }
+  .cat-defi { background:rgba(219,109,40,.15); color:#db6d28; }
+  .cat-market { background:rgba(248,81,73,.15); color:var(--red); }
+  .cat-payments { background:rgba(86,211,100,.15); color:#56d364; }
+  .cat-rwa { background:rgba(219,109,40,.15); color:#db6d28; }
+  .cat-macro { background:rgba(139,148,158,.18); color:#adbac7; }
+  .news-card h3 { font-size:.92rem; font-weight:700; margin-bottom:6px; line-height:1.5; }
+  .desc { color:var(--muted); font-size:.8rem; line-height:1.72; margin-bottom:8px; }
+  .so-what { background:rgba(88,166,255,.05); border-left:3px solid var(--line); padding:7px 10px; border-radius:0 6px 6px 0; font-size:.76rem; color:var(--muted); }
+  .so-what strong { color:var(--blue); }
+  .trend-box { background:linear-gradient(135deg,#1c1e2e 0%,#161b22 100%); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin-bottom:22px; }
+  .trend-box .tag { background:rgba(163,113,247,.15); color:var(--purple); }
+  .trend-box h3 { font-size:.98rem; font-weight:800; margin-bottom:8px; }
+  .trend-box p { color:var(--muted); font-size:.8rem; line-height:1.8; }
+  .trend-list { list-style:none; display:grid; gap:10px; margin-top:4px; }
+  .trend-list li { color:var(--muted); font-size:.8rem; line-height:1.72; padding-left:14px; position:relative; }
+  .trend-list li::before { content:''; position:absolute; left:0; top:.62em; width:5px; height:5px; border-radius:50%; background:var(--purple); }
+  .trend-list strong { color:var(--text); }
+  .footer { text-align:center; padding:18px 0; border-top:1px solid var(--border); color:var(--soft); font-size:.72rem; max-width:1400px; margin:20px auto 0; }
+  @media (max-width:900px) {
+    body { padding:10px; }
+    .header h1 { font-size:1.55rem; }
+    .main-layout { grid-template-columns:1fr; }
+    .left-panel { position:static; }
+  }
+</style>
+</head>
+<body>
+<body>
+<div class="header">
+  <div class="eyebrow">Research Briefing</div>
+  <h1>每日金融科技简报</h1>
+  <div class="date">2026年11月12日 · 周四 · UTC+8 · MSCI 正式把 Strategy、Metaplanet 移出指数，BTC ETF 连续 5 日净流出、比特币守在 $73,000 附近；德银加密托管上线、野村考虑出售 Laser Digital，Anthropic IPO 获数倍认购推动纳指涨 1.60%</div>
+</div>
+<div class="main-layout">
+  <div class="left-panel">
+    <div class="pricing-card">
+      <div class="card-label"><span class="asset-name">BTC · Bitcoin</span><span class="change-badge badge-down">▼ 较昨日 -0.86%</span></div>
+      <div class="price-value">$73,341</div>
+      <div class="sparkline-container" id="spark-btc"><div class="sparkline-tooltip" id="tip-btc"></div></div>
+    </div>
+    <div class="pricing-card">
+      <div class="card-label"><span class="asset-name">ETH · Ethereum</span><span class="change-badge badge-down">▼ 较昨日 -0.67%</span></div>
+      <div class="price-value">$2,042</div>
+      <div class="sparkline-container" id="spark-eth"><div class="sparkline-tooltip" id="tip-eth"></div></div>
+    </div>
+    <div class="pricing-card">
+      <div class="card-label"><span class="asset-name">XAU · XAU/USD</span><span class="change-badge badge-down">▼ 较昨日 -1.38%</span></div>
+      <div class="price-value">$3,932.70</div>
+      <div class="sparkline-container" id="spark-xau"><div class="sparkline-tooltip" id="tip-xau"></div></div>
+    </div>
+    <div class="pricing-card">
+      <div class="card-label"><span class="asset-name">加密总市值</span><span class="change-badge badge-down">▼ 较昨日 -0.94%</span></div>
+      <div class="price-value">$2.429T</div>
+      <div class="sparkline-container" id="spark-total"><div class="sparkline-tooltip" id="tip-total"></div></div>
+    </div>
+    <div class="pricing-card">
+      <div class="card-label"><span class="asset-name">Nasdaq</span><span class="change-badge badge-up">▲ 较昨日 +1.60%</span></div>
+      <div class="price-value">25,466.19</div>
+      <div class="sparkline-container" id="spark-nasdaq"><div class="sparkline-tooltip" id="tip-nasdaq"></div></div>
+    </div>
+    <div class="pricing-card">
+      <div class="card-label"><span class="asset-name">S&P 500</span><span class="change-badge badge-up">▲ 较昨日 +1.31%</span></div>
+      <div class="price-value">7,619.38</div>
+      <div class="sparkline-container" id="spark-spx"><div class="sparkline-tooltip" id="tip-spx"></div></div>
+    </div>
+    <div class="pricing-card">
+      <div class="card-label"><span class="asset-name">上证指数</span><span class="change-badge badge-down">▼ 较昨日 -0.67%</span></div>
+      <div class="price-value">3,655.83</div>
+      <div class="sparkline-container" id="spark-ssec"><div class="sparkline-tooltip" id="tip-ssec"></div></div>
+    </div>
+    <div class="gauge-card">
+      <div class="gauge-title">Crypto Fear & Greed Index</div>
+      <div class="gauge-svg-wrap">
+        <svg viewBox="0 0 200 120" id="gauge-svg"></svg>
+        <span class="gauge-side-label left">恐惧</span>
+        <span class="gauge-side-label right">贪婪</span>
+      </div>
+      <div class="gauge-value">28</div>
+      <div class="gauge-label">恐惧 · Fear（昨日 29）</div>
+    </div>
+    <div class="pulse-card">
+      <h3>Market Pulse</h3>
+      <ul>
+        <li>主叙事：<strong>加息预期 + 财库公司出指数</strong>——10 月 CPI 环比 +0.4%、核心 +0.3%，均高于预期 0.1 个百分点；FedWatch 11/10 快照显示 12 月加息 25bp 概率 86.4%、50bp 13.6%。</li>
+        <li>资金流（SoSoValue，美东 11/11）：<strong>BTC 现货 ETF 净流出 2.999 亿美元，连续第 5 个交易日流出、累计约 14.4 亿</strong>，IBIT 单日 -2.70 亿；ETH 现货 ETF 净流出 1.45 亿，ETHA 占 1.30 亿。</li>
+        <li>衍生品（CoinGlass，11/12 13:44）：BTC 合约未平仓 505.8 亿美元、24h -2.22%；OI 加权资金费率 0.0084%，低于 0.01% 基准——杠杆在退，但没有出现大规模负费率。</li>
+        <li>分化：AI 股领涨美股（纳指 +1.60%、科技板块 +2.71%），同日 BTC -0.86%、黄金 -1.38%；加密并未跟随风险偏好修复。</li>
+      </ul>
+    </div>
+    <div class="data-source">
+      BTC / ETH：CoinGecko simple/price 实时 $73,341 / $2,041.61（2026-11-12 17:15 UTC+8）；7 日序列取 CoinGecko market_chart 每日 00:00 UTC 点；badge 按末两点计算（BTC $73,974.40→$73,341 = -0.86%、ETH $2,055.40→$2,041.61 = -0.67%）<br>
+      加密总市值：CoinGecko global 实时 $2.429T（2026-11-12 17:15 UTC+8）；历史点按 BTC+ETH 市值与当前占比（60.53% + 10.24%）折算并校准至实时值，非官方日终读数；badge 按末两点计算，不采用 global 自带 24h 字段（-3.10%）<br>
+      XAU/USD：gold-api 实时 $3,932.70（2026-11-12 17:15 UTC+8）；历史为新浪财经伦敦金日线收盘，昨值取 11/11 收盘 $3,987.69<br>
+      Nasdaq / S&P 500：美国市场 2026-11-11（周三）收盘（纳指 +1.60% 报 25,466.19、标普 +1.31% 报 7,619.38、道指 +0.49% 报 52,486.49，新华社纽约 11/11 电；新浪美股日线交叉核对），11/12 美股尚未开盘<br>
+      上证指数：A股 2026-11-12（周四）收盘 3,655.83（-0.67%，上证报收评；新浪日线核对），前值 11/11 收盘 3,680.64<br>
+      情绪：Alternative.me（2026-11-12 17:15 UTC+8，报 28 · Fear）<br>
+      注：本期为 17:15 补跑生成，行情均为补跑时点实时值
+    </div>
+  </div>
+  <div class="right-panel">
+    <div class="headline">
+      <span class="tag">今日头条 · 83/100</span>
+      <h2><a href="https://www.cls.cn/detail/2532788" target="_blank" rel="noopener">MSCI 将 Strategy 从全球指数中剔除，被动资金流入或遭掐断</a></h2>
+      <div class="subtitle">MSCI 11 月 11 日评审结果 · "非经营性公司"新规首次执行，Strategy、Metaplanet 12 月 1 日前出局——"发股买币"模式失去被动资金这一买方，而 BTC ETF 同期已连续 5 日流出。</div>
+      <p>MSCI 在 11 月 11 日美东盘后公布评审名单，<strong>Strategy、Metaplanet 与铀投资公司 Yellow Cake 被认定为"非经营性公司"，11 月 30 日收盘后从 MSCI 美国、MSCI 世界等指数移除</strong>；SharpLink 列入观察名单。新规 10 月中旬敲定：先看经营资产，未通过者做五项财务比率测试，触发四项即失去资格。MSTR 夜盘一度跌近 4%。JPMorgan 此前估算剔除带来约 <strong>28 亿美元</strong>被动卖盘，若其他指数商跟进可达 88 亿。</p>
+      <p>今天把它放在头条，是因为它改变的是财库公司的融资结构，而不只是一只股票的仓位：Strategy 靠发股、发优先股筹资买币，指数资格决定了这些证券的被动需求和溢价。同一时间，现货 ETF 这条买方也在流出——两个主要的增量买盘同时减弱。</p>
+      <ul>
+        <li><strong>已验证事实</strong>（MSCI 公告 / 路透 / 财联社 / 智通财经）：Strategy、Metaplanet、Yellow Cake 确认移除，生效时间 11 月 30 日收盘后；Strategy 曾警告约 28 亿美元股票将面临清算。</li>
+        <li><strong>编辑分析（非确定）：</strong>被动卖盘落在 MSTR 股票上，而不是 BTC 本身；对 BTC 的影响主要通过"Strategy 后续发股买币能力下降"间接传导，节奏取决于其 mNAV 溢价是否继续收窄。</li>
+        <li><strong>反向证据：</strong>剔除方案 8 月模拟就已公开、10 月敲定，市场有三个月消化；结果公布后 MSTR 夜盘跌幅不足 4%，BTC 当日仅 -0.86%，说明大部分冲击可能已被提前交易。</li>
+      </ul>
+      <div class="insight">编辑判断：接下来两周要看两件事——标普道琼斯、富时罗素是否跟进同类规则，以及 Strategy 在 11 月 30 日前是否放缓发行 ATM 股份。若两项都出现，财库公司的"溢价—增发—买币"循环会被明显削弱。</div>
+    </div>
+
+    <div class="news-section">
+      <div class="section-title">重点事件</div>
+
+      <div class="news-card focus-card">
+        <div class="card-header"><span class="category cat-tradfi">TradFi</span><span class="event-date">事件日 11-11</span></div>
+        <h3><a href="https://live.euronext.com/en/financial-news/deutsche-bank-launches-digital-asset-custody-service" target="_blank" rel="noopener">德意志银行推出数字资产托管服务</a></h3>
+        <div class="desc">据路透 11 月 11 日报道，<strong>德银数字资产托管已对付费的机构与企业客户上线，首批支持 BTC、ETH、USDC、EURC 与 EURAU</strong>，由银行代管私钥，客户通过 Autobahn 平台接入；底层技术合作方为 Taurus。服务依托 10 月 12 日取得的 BaFin MiCA 托管与转账登记，可经跨境安排服务欧盟其他市场；首批不含交易与代币化证券，计划 2027 年扩展至亚洲金融中心。同日德银与旗下资管 DWS 签署数字资产合作备忘录。</div>
+        <div class="so-what"><strong>So What：</strong>德国最大银行把加密托管纳入交易银行业务，意味着欧洲机构不必再依赖专业托管商即可持币。但托管上线不等于新增买盘——德银未披露首批客户和规模，它首先争夺的是 BitGo、Anchorage 等现有托管份额。</div>
+        <div class="desc" style="margin-top:6px;color:var(--soft);">下一观察点：德银是否在 2027 年上线法币—稳定币兑换与代币化存款；DWS 合作的首个产品形态。</div>
+      </div>
+
+      <div class="news-card focus-card">
+        <div class="card-header"><span class="category cat-ai">AI</span><span class="event-date">事件日 11-11</span></div>
+        <h3><a href="https://www.stcn.com/article/detail/4332760.html" target="_blank" rel="noopener">Anthropic IPO 获数倍超额认购，有望成为史上最大 IPO</a></h3>
+        <div class="desc">据彭博 11 月 11 日援引知情人士（证券时报、财联社转引），<strong>Anthropic IPO 认购订单已达可售股份的数倍，主要来自大型投资者的锚定规模意向</strong>。招股文件显示拟以每股 70–78 美元发行 8.25 亿股、募资最高约 643.5 亿美元，另以私募配售向谷歌、英伟达、AMD 等筹 260 亿美元，合计最高 904 亿美元；完全稀释估值约 1.4 万亿美元，低于此前部分投资者 2 万亿美元的预期。高盛、摩根士丹利联席主承销，预计 11 月 19 日以代码 ANT 在纳斯达克交易。</div>
+        <div class="so-what"><strong>So What：</strong>消息叠加 CoreWeave 财报，带动美股科技板块单日涨 2.71%、纳指涨 1.60%；但 BTC 同日下跌——AI 正在吸走风险偏好与增量资金，加密不再是"高 beta 科技"的自然受益者。FTX 2024 年以约 13.4 亿美元卖出的 Anthropic 股份，按发行区间计算价值 312–347 亿美元。</div>
+        <div class="desc" style="margin-top:6px;color:var(--soft);">下一观察点：最终定价是否上调区间；11 月 19 日上市首日表现与同期 BTC ETF 资金流的对比。</div>
+      </div>
+
+      <div class="news-card focus-card">
+        <div class="card-header"><span class="category cat-regulation">监管</span><span class="event-date">事件日 11-12</span></div>
+        <h3><a href="https://crypto.news/south-korea-bank-led-won-stablecoin-rules/" target="_blank" rel="noopener">韩国考虑出台由银行主导稳定币发行的新规</a></h3>
+        <div class="desc">据 ZDNet Korea 11 月 12 日报道（crypto.news、Bloomingbit 交叉核对），<strong>韩国《数字资产基本法》讨论方案要求韩元稳定币由银行持股"50%+1 股"的财团发行</strong>，交易所与支付公司只参与分发、商户结算；金融委员会预计 11 月公布法案主要条款。韩国央行 11 月 10 日称银行主导是减少监管冲突的"次优选择"，主张先由银行发行、再逐步放开。同日国会论坛上，VIDEX CEO 呼吁按风控能力而非机构类型发牌。公平交易委员会 11 月 10 日已开始审议 Upbit 运营商 Dunamu 与 Naver Financial 合并，涉及未来韩元稳定币市场。</div>
+        <div class="so-what"><strong>So What：</strong>若"银行控股"写入法律，Naver—Upbit、Kakao 等科技与交易所阵营只能做分发层，发行利差留在银行体系。这与美国 GENIUS 法案允许非银行发行的路线明显不同，也决定了韩元稳定币能否与 USDT/USDC 在本地支付场景竞争。</div>
+        <div class="desc" style="margin-top:6px;color:var(--soft);">下一观察点：金融委员会 11 月公布的条款中，持股比例与非银行准入是否保留过渡安排；公平委对 Dunamu—Naver 的附条件决定。</div>
+      </div>
+    </div>
+    <div class="news-section">
+      <div class="section-title">行业雷达</div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-market">市场</span><span class="event-date">事件日 11-11</span></div>
+        <h3><a href="https://crypto.news/blackrock-leads-300-million-bitcoin-etf-outflows-as-btc-struggles-near-73k/" target="_blank" rel="noopener">贝莱德领衔 3 亿美元比特币 ETF 流出，BTC 在 $73,000 附近挣扎</a></h3>
+        <div class="desc">SoSoValue 数据显示，美国现货 BTC ETF 11 月 11 日<strong>净流出 2.999 亿美元，IBIT 占 2.70 亿、GBTC 3,913 万</strong>，仅摩根士丹利 MSBT 净流入 896 万；已连续 5 个交易日流出约 14.4 亿，累计净流入仍有 551 亿。Bitfinex 统计 10/30 以来 8 个交易日共流出 22.2 亿，短期持有者成本 $75,717 是首个反弹关口。</div>
+        <div class="so-what"><strong>So What：</strong>流出集中在 IBIT，说明是大型配置型资金在减仓而非散户恐慌；只要 BTC 在 $75,700 下方，接近成本价的反弹都会遇到解套卖盘。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-regulation">监管</span><span class="event-date">事件日 11-11</span></div>
+        <h3><a href="https://crypto.news/russia-clears-crypto-exchange-trading-from-nov-22-under-central-bank-rules/" target="_blank" rel="noopener">俄罗斯批准交易所自 11 月 22 日起按央行规则开展加密货币交易</a></h3>
+        <div class="desc">据国际文传电讯社与塔斯社 11 月 11 日报道，<strong>俄司法部已登记俄央行关于加密资产有组织交易的指令，交易规则获央行批准后，交易所可从 11 月 22 日起开展交易</strong>，须登记参与者、保存委托与成交记录并按现有金融工具口径报送。此前央行已批准 BTC、ETH、USDT 自 11 月 17 日起向非合格投资者开放（每家中介每年上限 30 万卢布）；莫斯科交易所计划 12 月 1 日上线。</div>
+        <div class="so-what"><strong>So What：</strong>俄罗斯把加密交易放进现有交易所与清算体系，USDT 也在首批名单内——在受制裁背景下，这为美元稳定币提供了一个受监管的本地流动性入口。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-tradfi">TradFi</span><span class="event-date">事件日 11-11</span></div>
+        <h3><a href="https://crypto.news/nomura-laser-digital-crypto-unit-sale-marex/" target="_blank" rel="noopener">野村考虑出售加密子公司 Laser Digital</a></h3>
+        <div class="desc">彭博 11 月 11 日援引知情人士报道（Cointelegraph、雅虎财经转引），<strong>野村正与潜在买家接触，Marex 集团在评估收购</strong>，尚无最终决定。Laser Digital 此前的交易亏损曾令野村欧洲业务转亏，后者已连续 4 个季度亏损、9 月季度税前亏损 74 亿日元。该公司今年 8 月刚取得日本加密交易所登记，5 月获 OCC 信托银行初步有条件批准。</div>
+        <div class="so-what"><strong>So What：</strong>与德银同日上线托管形成对照：银行愿意做收费稳定的托管，但对自营交易型加密子公司的风险承受度在下降。机构参与正在向"托管+分发"集中。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-rwa">RWA</span><span class="event-date">事件日 11-11</span></div>
+        <h3><a href="https://crypto.news/kraken-payward-200-uk-eu-tokenized-stocks-ftse-dax/" target="_blank" rel="noopener">Kraken 母公司 Payward 将 200 多只英国和欧洲股票引入加密交易</a></h3>
+        <div class="desc">Payward 11 月 11 日公告，<strong>xStocks 新增覆盖富时 100 与 DAX 40 全部成分股在内的 200 多只英欧股票</strong>，DAX 代币同步在德交所支持的 360X 交易；xStocks 资产数超 1,500、管理规模逾 11 亿美元、持有人超 55 万。代币为泽西发行的追踪凭证，1:1 由 GTN 托管的正股支持，无投票权；英美投资者仍被排除，下一步是港股。</div>
+        <div class="so-what"><strong>So What：</strong>代币化股票开始从美股扩展到多市场，并与德交所这类传统基础设施共建交易场所——竞争焦点从"能不能上链"转向发行方的托管与法律结构。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-ai">AI</span><span class="event-date">事件日 11-10</span></div>
+        <h3><a href="https://www.prnewswire.com/news-releases/rain-agent-vaults-bring-embedded-payments-to-ai-agents-302935044.html" target="_blank" rel="noopener">Rain Agent Vaults 为 AI 智能体带来嵌入式支付</a></h3>
+        <div class="desc">稳定币支付基础设施商 Rain 11 月 10 日发布 Agent Vaults（PR Newswire 新闻稿，Foresight News 转引），<strong>平台可用自有品牌在应用内为 AI 智能体开设带余额的"金库"</strong>，资金可存为银行法币或稳定币；智能体可用 Rain 发行的限定用途 Visa/Mastercard 卡付款、向银行汇款或转账稳定币，并可设置支出上限、指定商户与付款时段。</div>
+        <div class="so-what"><strong>So What：</strong>智能体支付的竞争正从协议层（x402 等）转向"带额度和权限控制的账户"。把卡网络和稳定币放在同一个受控余额下，商户无需改造即可收款，这是比纯链上方案更快的落地路径。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-regulation">监管</span><span class="event-date">事件日 11-10</span></div>
+        <h3><a href="https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261110~9422461bad.en.html" target="_blank" rel="noopener">欧洲央行警告数字欧元可能无法在 2029 年推出</a></h3>
+        <div class="desc">欧洲央行执委 Cipollone 11 月 10 日在欧洲议会经济与货币事务委员会发言，<strong>敦促在 2026 年底前完成单一货币一揽子立法谈判，否则数字欧元的推出可能晚于 2029 年</strong>。议会 7 月已通过谈判立场，三方谈判 11 月 5 日仍未达成协议；12 个月试点仍计划 2027 年下半年启动，36 家支付服务商参与。</div>
+        <div class="so-what"><strong>So What：</strong>数字欧元时间表后移，给 Qivalis 等银行联盟欧元稳定币留出了窗口；欧洲的"本土支付工具"之争可能先由私人稳定币填补。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-defi">DeFi</span><span class="event-date">事件日 11-11</span></div>
+        <h3><a href="https://crypto.news/uniswap-v2-v3-v4-elysium-launch/" target="_blank" rel="noopener">Uniswap 在 Hyperliquid 生态的 Elysium 网络上线 v2、v3 和 v4</a></h3>
+        <div class="desc">Uniswap 11 月 11 日宣布三版协议部署至 Elysium，开发者文档已列出合约地址。<strong>Elysium 是 Kinetiq 基于 Arbitrum 技术构建、结算至 HyperEVM 的 L2，以 HYPE 支付 gas</strong>，11 月 9 日主网上线，宣称 100 毫秒出块；Kinetiq 承诺 50% 排序器收入回购 KNTQ、25% 分给开发者。</div>
+        <div class="so-what"><strong>So What：</strong>以太坊系头部 DEX 在主网上线两天内入驻，说明 Hyperliquid 正从单一永续交易所扩展为带 L2 的生态；HYPE 作为 gas 的需求场景随之增加。</div>
+      </div>
+
+      <div class="news-card">
+        <div class="card-header"><span class="category cat-infra">基础设施</span><span class="event-date">事件日 11-11</span></div>
+        <h3><a href="https://crypto.news/pyth-nyse-stock-etf-data-marketplace/" target="_blank" rel="noopener">Pyth 将五家纽交所交易所的实时数据加入其数据市场</a></h3>
+        <div class="desc">Pyth 11 月 11 日宣布，<strong>NYSE、NYSE American、Arca、National 与 Texas 五家交易所的 BQT（最优报价与成交）数据通过 Pyth Data Marketplace 分发</strong>，含停牌等市场状态信息；客户需直接与 NYSE 签数据许可，再经 Pyth 接收。竞争对手 Chainlink 已把股票报价服务扩展到周末与假日。</div>
+        <div class="so-what"><strong>So What：</strong>代币化股票与链上股票永续的规模扩大后，预言机的护城河变成"交易所一手授权"。由 NYSE 直接授权，意味着链上股价数据开始纳入传统行情的收费与合规体系。</div>
+      </div>
+    </div>
+    <div class="trend-box">
+      <span class="tag">趋势连线</span>
+      <h3>市场正在重新定价"谁还在买 BTC"——加息预期压住估值，ETF 与财库公司这两条增量买盘同时减弱；而银行、交易所与预言机正在把加密纳入受监管的托管、交易和数据体系</h3>
+      <ul class="trend-list">
+        <li><strong>今天被重新定价的核心变量：</strong>边际买方。2024–2025 年 BTC 的增量需求主要来自现货 ETF 和 Strategy 类财库公司；现在 ETF 连续 5 日流出 14.4 亿美元，MSCI 又切断了财库股票的被动资金。10 月 CPI 超预期、12 月加息定价约 86% 以上，则让新的配置资金缺少入场理由。</li>
+        <li><strong>短期噪声 vs 中期趋势：</strong>短期噪声是 MSTR 指数调整带来的被动卖盘、单日 ETF 数据和 F&G 在 25–32 之间的波动；中期趋势是机构参与方式在变化——德银上线托管、野村考虑退出自营型加密子公司、俄罗斯和韩国都把加密交易与稳定币发行放进银行与交易所体系。资金在流向"受监管的基础设施"，而不是直接买币。</li>
+        <li><strong>AI 与加密的分化：</strong>Anthropic IPO 超额认购当天纳指涨 1.60%、BTC 跌 0.86%。风险偏好并未消失，而是集中在 AI 资产上；加密需要自身的资金流数据转正，才能重新跟上科技股。</li>
+        <li><strong>可证伪信号：</strong>① 若 BTC 现货 ETF 在 11 月 19 日（Anthropic 上市）前恢复连续亿美元级净流入，"增量买方减弱"的判断需要修正；② 若标普道琼斯、富时罗素在 11 月 30 日前明确不跟进 MSCI，财库公司估值压力会缓解；③ 若 BTC 收复 $75,717（短期持有者成本）并站稳一周，说明解套卖压已消化。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <p>每日金融科技简报 · 事实与观点已分层呈现 · 不构成投资建议</p>
+  <p style="margin-top:4px;">来源：MSCI 公告 / 路透 / 财联社 / 智通财经 / crypto.news（MSCI 剔除 Strategy）· 路透（Euronext 转载）/ crypto.news / CoinPost（德银托管）· 彭博 / 证券时报 / 财联社 / 中新经纬 / crypto.news（Anthropic IPO）· ZDNet Korea / crypto.news / Bloomingbit / Digital Today（韩元稳定币）· SoSoValue / Farside / Bitfinex Alpha / crypto.news（ETF 资金流）· 国际文传电讯社 / 塔斯社 / PANews / crypto.news（俄罗斯加密交易）· 彭博 / Cointelegraph / 雅虎财经 / crypto.news（野村 Laser Digital）· Payward 公告 / BusinessWire / crypto.news（xStocks）· PR Newswire / Foresight News（Rain Agent Vaults）· 欧洲央行官网 / crypto.news（数字欧元）· Uniswap 开发者文档 / GlobeNewswire / crypto.news（Elysium）· Pyth 公告 / crypto.news（NYSE 数据）· 美国劳工统计局 / 同花顺 / CryptoSlate / WEEX（CPI 与加息概率）· CoinGlass（衍生品）· 新华社 / 上海证券报 / 新浪财经（美股与 A 股收盘）· CoinGecko / gold-api / Alternative.me / 新浪财经（行情与情绪）</p>
+</div>
+<script>
+const priceData = {
+  btc: { dates: ["11/06","11/07","11/08","11/09","11/10","11/11","11/12"], values: [75775.28, 75776.38, 74740.42, 75266.8, 73721.2, 73974.4, 73341], format: v => "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 0}) },
+  eth: { dates: ["11/06","11/07","11/08","11/09","11/10","11/11","11/12"], values: [2236.3, 2237.1, 2124.4, 2132.1, 2050.3, 2055.4, 2041.61], format: v => "$" + Number(v).toLocaleString(undefined, {maximumFractionDigits: 0}) },
+  xau: { dates: ["11/04","11/05","11/06","11/09","11/10","11/11","11/12"], values: [4060.01, 4088.8, 4070.75, 4140.94, 4032.73, 3987.69, 3932.7], format: v => "$" + Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
+  total: { dates: ["11/06","11/07","11/08","11/09","11/10","11/11","11/12"], values: [2.534, 2.534, 2.485, 2.501, 2.444, 2.452, 2.429], format: v => "$" + Number(v).toFixed(3) + "T" },
+  nasdaq: { dates: ["11/03","11/04","11/05","11/06","11/09","11/10","11/11"], values: [25372.01, 25736.51, 24315.0, 24579.42, 25253.14, 25065.88, 25466.19], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
+  spx: { dates: ["11/03","11/04","11/05","11/06","11/09","11/10","11/11"], values: [7568.92, 7688.62, 7353.73, 7376.86, 7549.94, 7520.93, 7619.38], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
+  ssec: { dates: ["11/04","11/05","11/06","11/09","11/10","11/11","11/12"], values: [3686.17, 3689.91, 3649.18, 3660.79, 3663.72, 3680.64, 3655.83], format: v => Number(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }
+};
+function createSparkline(containerId, tooltipId, data) {
+  const container = document.getElementById(containerId);
+  const values = data.values, dates = data.dates;
+  const w = container.offsetWidth || 300, h = 58;
+  const padding = { top: 8, bottom: 8, left: 4, right: 4 };
+  const plotW = w - padding.left - padding.right, plotH = h - padding.top - padding.bottom;
+  const min = Math.min(...values), max = Math.max(...values), range = max - min || 1;
+  const points = values.map((v, i) => {
+    const x = padding.left + (plotW * i / (values.length - 1 || 1));
+    const y = padding.top + (max - v) / range * plotH;
+    return { x, y, v, d: dates[i] };
+  });
+  const color = values[values.length - 1] >= values[values.length - 2] ? "#f85149" : "#3fb950";
+  const area = points.map((p, i) => (i ? "L" : "M") + p.x + "," + p.y).join(" ") + ` L ${points[points.length-1].x},${h-padding.bottom} L ${points[0].x},${h-padding.bottom} Z`;
+  const line = points.map((p, i) => (i ? "L" : "M") + p.x + "," + p.y).join(" ");
+  container.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    <defs><linearGradient id="grad-${containerId}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${color}" stop-opacity="0.28"/><stop offset="100%" stop-color="${color}" stop-opacity="0.02"/></linearGradient></defs>
+    <path d="${area}" fill="url(#grad-${containerId})"></path>
+    <path d="${line}" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg><div class="sparkline-tooltip" id="${tooltipId}"></div>`;
+  const newTip = document.getElementById(tooltipId);
+  const svg = container.querySelector("svg");
+  svg.addEventListener("mousemove", e => {
+    const rect = svg.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const idx = Math.max(0, Math.min(points.length - 1, Math.round((x / rect.width) * (points.length - 1))));
+    const p = points[idx];
+    newTip.style.opacity = 1;
+    newTip.innerHTML = `${p.d}<br>${data.format(p.v)}`;
+    newTip.style.left = Math.min(rect.width - 72, Math.max(0, p.x - 36)) + "px";
+    newTip.style.top = Math.max(0, p.y - 42) + "px";
+  });
+  svg.addEventListener("mouseleave", () => { newTip.style.opacity = 0; });
+}
+
+function drawGauge(value) {
+  const svg = document.getElementById("gauge-svg"), cx = 100, cy = 95, r = 75;
+  const segments = [
+    {start:180,end:216,color:"#3fb950"}, {start:216,end:252,color:"#56d364"},
+    {start:252,end:288,color:"#d29922"}, {start:288,end:324,color:"#f0883e"},
+    {start:324,end:360,color:"#f85149"}
+  ];
+  const arcs = segments.map(s => {
+    const a=s.start*Math.PI/180,b=s.end*Math.PI/180;
+    return `<path d="M ${cx+r*Math.cos(a)} ${cy+r*Math.sin(a)} A ${r} ${r} 0 0 1 ${cx+r*Math.cos(b)} ${cy+r*Math.sin(b)}" fill="none" stroke="${s.color}" stroke-width="12" stroke-linecap="butt" opacity="1"/>`;
+  }).join("");
+  const angle=(180+value*1.8)*Math.PI/180, nx=cx+(r-15)*Math.cos(angle), ny=cy+(r-15)*Math.sin(angle);
+  svg.innerHTML = `${arcs}<line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="#dfe6ee" stroke-width="2.5" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="5" fill="#dfe6ee"/>`;
+}
+
+["btc","eth","xau","total","nasdaq","spx","ssec"].forEach(k => {
+  createSparkline("spark-"+k, "tip-"+k, priceData[k]);
+});
+drawGauge(28);
+</script>
+</body>
+</html>
